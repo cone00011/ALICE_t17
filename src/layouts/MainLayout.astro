@@ -3,6 +3,7 @@ import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import '../styles/tailwind.css';
 const { title } = Astro.props;
+const backgroundImage = "/logo/alice_baggrund.png";
 ---
 <html lang="en">
 	<head>
@@ -19,7 +20,7 @@ const { title } = Astro.props;
 			<Header></Header>
 		</header>
 		
-		<main>
+		<main class="site-background">
 			<slot />
 		</main>
 
@@ -29,3 +30,13 @@ const { title } = Astro.props;
 			
 	</body>
 </html>
+
+<style>
+  .site-background {
+    background-image: url(/logo/alice_baggrund.png);
+    background-size: cover;      /* fylder hele siden */
+    background-position: center; /* centrerer billedet */
+    background-repeat: no-repeat;
+    min-height: 100vh;           /* sikrer billedet fylder hele */
+  }
+</style>
