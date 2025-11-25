@@ -1,5 +1,84 @@
 ---
+// Menu.astro
+const menuItems = [
+  "PROGRAM",
+  "OM ALICE",
+  "GAVEKORT",
+  "FRIVLLIG",
+  "MEDLEMSKAB",
+  "GÆSTEBOG",
+  "EN/DA"
+];
 ---
-<div>
-Header - tilføj navigation mm.
-</div>
+
+<style>
+  nav {
+    /*  HER STYRER DU HØJDERNE */
+    --menu-height-desktop: 110px;
+    --menu-height-mobile: 70px;
+  }
+
+  @media (min-width: 768px) {
+    nav {
+      height: var(--menu-height-desktop);
+    }
+  }
+
+  @media (max-width: 767px) {
+    nav {
+      height: var(--menu-height-mobile);
+    }
+  }
+</style>
+
+<nav 
+  class="relative bg-cover bg-top bg-no-repeat lg:border-b-5 border-b-3 border-b-[#4A40FF] w-full mx-auto"
+  style="
+    background-image: url('/logo/alice_baggrund.png');
+  "
+>
+
+  <!-- Desktop menu -->
+  <ul class="hidden md:flex justify-center gap-20 pt-10 text-[#272727] text-[20px]">
+    {menuItems.map(item => (
+      <li class="cursor-pointer hover:opacity-70">{item}</li>
+    ))}
+  </ul>
+
+  <!-- Mobile: top bar -->
+  <div class="md:hidden flex  justify-between items-center px-4 pt-4 text-[#272727] font-semibold">
+    <img src="/logo/272727_logo.png" alt="Logo" class="h-9 w-auto" />
+
+    <button class="focus:outline-none" id="menuToggle" aria-label="Toggle Menu">
+      <svg
+        class="w-7 h-7"
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+      >
+        <path stroke-width="1.5" d="M4 6h20M4 12h20M4 18h20" />
+      </svg>
+    </button>
+  </div>
+
+  <!-- Mobile dropdown -->
+  <ul
+    id="mobileMenu"
+    class="md:hidden flex flex-col gap-3 text-[#272727] bg-[url('/logo/alice_baggrund.png')]  px-4 py-4 mt-2 border-b-3 border-b-[#4A40FF]"
+    style="display: none;"
+  >
+    {menuItems.map(item => (
+      <li class="cursor-pointer hover:opacity-70">{item}</li>
+    ))}
+  </ul>
+
+</nav>
+
+<script is:inline>
+  const btn = document.getElementById("menuToggle");
+  const menu = document.getElementById("mobileMenu");
+
+  btn.addEventListener("click", () => {
+    menu.style.display = menu.style.display === "none" ? "flex" : "none";
+  });
+</script>

@@ -1,0 +1,175 @@
+---
+const colsDesktop = 10;
+const rowsDesktop = 8;
+
+// Pink celler til desktop
+const pinkCellsDesktop = [0, 1, 5, 6, 8, 19, 23, 24, 26, 35, 36, 46, 47, 51, 52, 58];
+
+// Stroke grupper til desktop
+const strokeGroupsDesktop = [
+  { startCol: 1, startRow: 1, colSpan: 2, rowSpan: 1 }, // omkring celler 0 og 1
+  { startCol: 10, startRow: 2, colSpan: 1, rowSpan: 1 }, // omkring celle 23
+  { startCol: 2, startRow: 6, colSpan: 2, rowSpan: 1 }, // omkring nogle celler
+  { startCol: 9, startRow: 6, colSpan: 1, rowSpan: 1 }  // omkring enkelte celler
+];
+
+const colsMobile = 6;
+const rowsMobile = 8;
+
+// Pink celler til mobil
+const pinkCellsMobile = [0, 1, 9, 10, 11, 12, 20, 34, 35, 36];
+
+// Stroke grupper til mobil
+const strokeGroupsMobile = [
+  { startCol: 1, startRow: 1, colSpan: 2, rowSpan: 1 },
+  { startCol: 3, startRow: 4, colSpan: 1, rowSpan: 1 },
+  { startCol: 1, startRow: 7, colSpan: 1, rowSpan: 1 },
+];
+---
+
+<article class="desktop-grid">
+   
+  <div class="hero-grid-desktop">
+    {Array.from({ length: rowsDesktop }).map((_, rIdx) => (
+      Array.from({ length: colsDesktop }).map((_, cIdx) => {
+        const inStroke = strokeGroupsDesktop.some(g =>
+          cIdx >= g.startCol - 1 &&
+          cIdx < g.startCol - 1 + g.colSpan &&
+          rIdx >= g.startRow - 1 &&
+          rIdx < g.startRow - 1 + g.rowSpan
+        );
+
+        const cellIndex = rIdx * colsDesktop + cIdx;
+        const isPink = pinkCellsDesktop.includes(cellIndex);
+
+        if (inStroke) {
+          const strokeGroup = strokeGroupsDesktop.find(g =>
+            cIdx === g.startCol - 1 && rIdx === g.startRow - 1
+          );
+          if (strokeGroup) {
+            return (
+              <div
+                class="stroke-wrapper"
+                style={`grid-column: ${strokeGroup.startCol} / span ${strokeGroup.colSpan}; grid-row: ${strokeGroup.startRow} / span ${strokeGroup.rowSpan};`}
+              >
+                {Array.from({ length: strokeGroup.rowSpan }).map((_, rowOffset) =>
+                  Array.from({ length: strokeGroup.colSpan }).map((_, colOffset) => {
+                    const idx = (strokeGroup.startRow - 1 + rowOffset) * colsDesktop + (strokeGroup.startCol - 1 + colOffset);
+                    return <div class={`cell ${pinkCellsDesktop.includes(idx) ? "pink" : ""}`}></div>;
+                  })
+                )}
+              </div>
+            );
+          } else {
+            return null;
+          }
+        } else {
+          return <div class={`cell ${isPink ? "pink" : ""}`}></div>;
+        }
+      })
+    ))}
+    
+  </div>
+</article>
+
+<article class="mobile-grid">
+  <div class="hero-grid-mobile">
+    {Array.from({ length: rowsMobile }).map((_, rIdx) => (
+      Array.from({ length: colsMobile }).map((_, cIdx) => {
+        const inStroke = strokeGroupsMobile.some(g =>
+          cIdx >= g.startCol - 1 &&
+          cIdx < g.startCol - 1 + g.colSpan &&
+          rIdx >= g.startRow - 1 &&
+          rIdx < g.startRow - 1 + g.rowSpan
+        );
+
+        const cellIndex = rIdx * colsMobile + cIdx;
+        const isPink = pinkCellsMobile.includes(cellIndex);
+
+        if (inStroke) {
+          const strokeGroup = strokeGroupsMobile.find(g =>
+            cIdx === g.startCol - 1 && rIdx === g.startRow - 1
+          );
+          if (strokeGroup) {
+            return (
+              <div
+                class="stroke-wrapper"
+                style={`grid-column: ${strokeGroup.startCol} / span ${strokeGroup.colSpan}; grid-row: ${strokeGroup.startRow} / span ${strokeGroup.rowSpan};`}
+              >
+                {Array.from({ length: strokeGroup.rowSpan }).map((_, rowOffset) =>
+                  Array.from({ length: strokeGroup.colSpan }).map((_, colOffset) => {
+                    const idx = (strokeGroup.startRow - 1 + rowOffset) * colsMobile + (strokeGroup.startCol - 1 + colOffset);
+                    return <div class={`cell ${pinkCellsMobile.includes(idx) ? "pink" : ""}`}></div>;
+                  })
+                )}
+              </div>
+            );
+          } else {
+            return null;
+          }
+        } else {
+          return <div class={`cell ${isPink ? "pink" : ""}`}></div>;
+        }
+      })
+    ))}
+  </div>
+</article>
+
+<style>
+.hero-grid-desktop {
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  grid-template-rows: repeat(8, 10vw);
+  width: 100%;
+}
+
+.hero-grid-mobile {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-rows: repeat(8, 16vw);
+  width: 100%;
+}
+
+.desktop-grid {
+  display: block;
+}
+
+.mobile-grid {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .desktop-grid {
+    display: none;
+  }
+  .mobile-grid {
+    display: block;
+  }
+}
+
+.cell {
+  background: transparent;
+  border: 1px solid transparent;
+}
+
+.pink {
+  background: #e8a2c0;
+}
+
+/* Stroke på desktop */
+.stroke-wrapper {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 1fr);
+  grid-template-rows: repeat(auto-fit, 1fr);
+  border: 5px solid #4A40FF;
+  box-sizing: border-box;
+}
+
+/* Stroke på mobil - tyndere */
+@media (max-width: 768px) {
+  .mobile-grid .stroke-wrapper {
+    border: 3px solid #4A40FF;
+  }
+}
+</style>
+
