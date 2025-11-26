@@ -18,6 +18,13 @@ const menuItems = [
     --menu-height-mobile: 70px;
   }
 
+  /* Menu styling: apply Suisse Int'l regular and ~5% letter-spacing */
+  .menu-list {
+    letter-spacing: 0.05em;
+    font-family: var(--font-family-suisse);
+    font-weight: 400;
+  }
+
   @media (min-width: 768px) {
     nav {
       height: var(--menu-height-desktop);
@@ -39,7 +46,7 @@ const menuItems = [
 >
 
   <!-- Desktop menu -->
-  <ul class="hidden md:flex justify-center gap-20 pt-10 text-[#272727] text-[20px]">
+  <ul class="hidden md:flex justify-center gap-20 pt-10 text-[#272727] text-[20px] font-suisse menu-list">
     {menuItems.map(item => (
       <li class="cursor-pointer hover:opacity-70">{item}</li>
     ))}
@@ -64,7 +71,7 @@ const menuItems = [
   <!-- Mobile dropdown -->
   <ul
     id="mobileMenu"
-    class="md:hidden flex flex-col gap-3 text-[#272727] bg-[url('/logo/alice_baggrund.png')]  px-4 py-4 mt-2 border-b-3 border-b-[#4A40FF]"
+    class="md:hidden flex flex-col gap-3 text-[#272727] bg-[url('/logo/alice_baggrund.png')] px-4 py-4 mt-2 border-b-3 border-b-[#4A40FF] font-suisse menu-list"
     style="display: none;"
   >
     {menuItems.map(item => (

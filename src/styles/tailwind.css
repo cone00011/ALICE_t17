@@ -1,27 +1,31 @@
-@import 'tailwindcss';
-
-@plugin '@tailwindcss/typography';
-@plugin '@tailwindcss/forms';
+@import "tailwindcss";
 @import "tailwindcss-animated";
 @import "tailwindcss-intersect";
 
-@theme {
-  /* Her tilføjes theme variable // tokens */
+@font-face {
+  font-family: "Suisse Int'l";
+  src: url("/fonts/suisse-intl-light.ttf") format("truetype");
+  font-weight: 300;
+  font-style: normal;
 }
 
-@layer base {
-  *,
-  ::after,
-  ::before,
-  ::backdrop,
-  ::file-selector-button {
-    border-color: var(--color-gray-200, currentColor);
-  }
+@font-face {
+  font-family: "Suisse Int'l";
+  src: url("/fonts/suisse-intl-regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
 }
 
-@layer components{
-
+@font-face {
+  font-family: "Suisse Int'l";
+  src: url("/fonts/suisse-intl-medium.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
 }
-@layer utilities{
-  
+
+@font-face {
+  font-family: "Suisse Int'l";
+  src: url("/fonts/suisseintl-bold.otf") format("opentype");
+  font-weight: 700;
+  font-style: normal;
 }
