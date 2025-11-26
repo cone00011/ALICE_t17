@@ -1,0 +1,71 @@
+---
+
+---
+<article>
+<div class="relative w-full">
+  <!-- Grid container -->
+  <div class="hero-grid w-full h-full absolute inset-0  overflow-hidden">
+
+    <div class="grid-item col-start-1 col-span-2 row-start-1 row-span-1 md:col-start-1 md:col-span-2 md:row-start-1 md:row-span-1 flex ">
+      <img src="/blok/langblok_cropped.png" alt="Logo" />
+    </div>
+
+    <div class="grid-item col-start-5 col-span-2 row-start-2 row-span-1  md:col-start-6 md:col-span-2 md:row-start-1 md:row-span-1 flex ">
+      <img src="/blok/langblok.png" alt="Logo" />
+    </div>
+
+     <div class="grid-item col-start-1 col-span-1 row-start-3 row-span-1  md:col-start-9 md:col-span-1 md:row-start-1 md:row-span-1 flex ">
+      <img src="/blok/lilleblok.png" alt="Logo" />
+    </div>
+
+    <div class="grid-item col-start-3 col-span-1 row-start-4 row-span-1  md:col-start-10 md:col-span-1 md:row-start-2 md:row-span-1 flex ">
+      <img src="/blok/lilleblok_stroke.png" alt="Logo" />
+    </div>
+
+    <div class="grid-item col-start-5 col-span-2 row-start-6 row-span-1  md:col-start-4 md:col-span-2 md:row-start-3 md:row-span-1 flex ">
+      <img src="/blok/langblok.png" alt="Logo" />
+    </div>
+   
+    <!-- H1 placeret perfekt -->
+    <div class="grid-item col-start-1 col-span-4 row-start-2 row-span-2 md:col-start-2 md:col-span-4 md:row-start-2 md:row-span-1 flex  pointer-events-none">
+      <h1 class="text-7xl md:text-[150px]">ALICE</h1>
+    </div>
+
+    <!-- Logo under H1 -->
+    <div class="grid-item col-start-5 col-span-6 row-start-3 row-span-2 md:col-start-8 md:col-span-2 md:row-start-3 md:row-span-2 flex ">
+      <img src="/logo/272727_logo.png" alt="Logo" />
+    </div>
+
+    <!-- Stemningsbillede -->
+    <div class="grid-item col-start-1 col-span-4 row-start-5 row-span-2 md:col-start-2 md:col-span-4 md:row-start-4 md:row-span-2 flex ">
+      <img src="/img/stemning1.webp" alt="Stemning" class="object-cover w-full h-full" />
+    </div>
+  </div>
+</div>
+</article>
+
+<style>
+.hero-grid {
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  grid-template-rows: repeat(10, 10vw);
+  width: 100%;
+  height: 100%;
+  
+  position: relative;
+  overflow: hidden; /* Alt udenfor grid-celler bliver klippet */
+}
+
+.grid-item {
+  position: relative;
+  overflow: hidden; /* Alt udenfor kolonner/rækker klippes */
+}
+
+@media (max-width: 768px) {
+  .hero-grid {
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: repeat(15, 16vw);
+  }
+}
+</style>
+
