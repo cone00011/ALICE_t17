@@ -25,6 +25,11 @@ const menuItems = [
     font-weight: 400;
   }
 
+  /* Highlight color for specific menu items (e.g., EN/DA) */
+  .menu-item-highlight {
+    color: #4A40FF;
+  }
+
   @media (min-width: 768px) {
     nav {
       height: var(--menu-height-desktop);
@@ -48,7 +53,7 @@ const menuItems = [
   <!-- Desktop menu -->
   <ul class="hidden md:flex justify-center gap-20 pt-10 text-[#272727] text-[20px] font-suisse menu-list">
     {menuItems.map(item => (
-      <li class="cursor-pointer hover:opacity-70">{item}</li>
+      <li class={`cursor-pointer hover:opacity-70 ${item === "EN/DA" ? "menu-item-highlight" : ""}`}>{item}</li>
     ))}
   </ul>
 
@@ -75,7 +80,7 @@ const menuItems = [
     style="display: none;"
   >
     {menuItems.map(item => (
-      <li class="cursor-pointer hover:opacity-70">{item}</li>
+      <li class={`cursor-pointer hover:opacity-70 ${item === "EN/DA" ? "menu-item-highlight" : ""}`}>{item}</li>
     ))}
   </ul>
 
