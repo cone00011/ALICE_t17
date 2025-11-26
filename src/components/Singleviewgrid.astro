@@ -1,0 +1,88 @@
+---
+
+---
+
+<article>
+<div class="relative w-full">
+  <!-- Grid container -->
+  <div class="hero-grid w-full h-full absolute inset-0  overflow-hidden">
+
+    <div class="grid-item col-start-2 col-span-5 row-start-2 row-span-3 md:col-start-6 md:col-span-4 md:row-start-2 md:row-span-4 flex ml-3 pointer-events-none">
+      <h1 class="text-5xl md:text-[110px] font-suisse">Nadah El Shazly  + 
+Nova Varnrable</h1>
+    </div> 
+
+    <div class="grid-item col-start-2 col-span-5 row-start-3 row-span-1 mt-10 md:col-start-6 md:col-span-3 md:row-start-5 md:row-span-4 ml-3 flex  pointer-events-none">
+      <p class="text-[16px] md:text-[20px] font-suisse">Arabiske traditioner møder popproduktioner</p>
+    </div> 
+
+       <!-- Logo under ved billede -->
+    <div class="grid-item col-start-1 ml-10 mt-8 z-10 col-span-2 row-start-4 row-span-2 md:col-start-1 md:col-span-2 md:row-start-1 md:row-span-2 flex ">
+      <img src="/logo/272727_logo.png" alt="Logo" class="object-cover w-30 h-30" />
+    </div>
+
+    <!-- nadah_billede -->
+    <div class="grid-item col-start-2 col-span-4 row-start-5 row-span-4 md:col-start-2 md:col-span-4 md:row-start-2 md:row-span-4 flex ">
+      <img src="/img/nadah.webp" alt="nadah" class="object-cover w-full h-full" />
+    </div>
+
+    <div class="grid-item col-start-5 col-span-2 row-start-4 row-span-1 md:col-start-5 md:col-span-2 md:row-start-1 md:row-span-1 flex ">
+      <img src="/blok/langblok.png" alt="Logo" />
+    </div>
+
+    <div class="grid-item hidden md:col-start-10 md:col-span-2 md:row-start-2 md:row-span-2 md:flex ">
+      <img src="/blok/langblok_stroke_oprejst.png" alt="Logo" />
+    </div>
+
+     <div class="grid-item col-start-1 col-span-1 row-start-7 row-span-1 md:col-start-1 md:col-span-1 md:row-start-5 md:row-span-1 flex ">
+      <img src="/blok/lilleblok_stroke.png" alt="Logo" />
+    </div>
+   
+    <div class="grid-item col-start-5 col-span-2 row-start-9 row-span-1 md:col-start-7 md:col-span-2 md:row-start-7 md:row-span-1 flex ">
+      <img src="/blok/langblok.png" alt="Logo" />
+    </div>
+
+     <div class="grid-item col-start-6 col-span-1 row-start-10 row-span-1 md:col-start-7 md:col-span-1 md:row-start-6 md:row-span-1 flex ">
+      <img src="/blok/lilleblok.png" alt="Logo" />
+    </div>
+
+    <div class="grid-item col-start-1 col-span-2 row-start-12 row-span-2 md:col-start-1 md:col-span-2 md:row-start-13 md:row-span-2 flex ">
+      <img src="/blok/langblok_stroke_oprejst.png" alt="Logo" />
+    </div>
+   
+     <div class="grid-item col-start-4 col-span-1 row-start-20 row-span-1 md:col-start-5 md:col-span-1 md:row-start-8 md:row-span-1 flex ">
+      <img src="/blok/lilleblok_stroke.png" alt="Logo" />
+    </div>
+
+    <div class="grid-item col-start-1 col-span-1 row-start-24 row-span-1 md:col-start-1 md:col-span-1 md:row-start-20 md:row-span-1 flex ">
+      <img src="/blok/lilleblok_stroke.png" alt="Logo" />
+    </div>
+
+  </div>
+</div>
+</article>
+
+<style>
+.hero-grid {
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  grid-template-rows: repeat(30, 10vw);
+  width: 100%;
+  height: 100%;
+  
+  position: relative;
+  overflow: hidden; /* Alt udenfor grid-celler bliver klippet */
+}
+
+.grid-item {
+  position: relative;
+  overflow: hidden; /* Alt udenfor kolonner/rækker klippes */
+}
+
+@media (max-width: 768px) {
+  .hero-grid {
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: repeat(30, 16vw);
+  }
+}
+</style>
