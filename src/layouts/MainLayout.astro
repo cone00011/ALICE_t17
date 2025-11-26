@@ -6,29 +6,28 @@ const { title } = Astro.props;
 const backgroundImage = "/logo/alice_baggrund.png";
 ---
 <html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>{Astro.props.title}</title>
-		<script defer src="https://unpkg.com/tailwindcss-intersect@2.x.x/dist/observer.min.js"></script>
-	</head>
-	<body>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{Astro.props.title}</title>
+    <script defer src="https://unpkg.com/tailwindcss-intersect@2.x.x/dist/observer.min.js"></script>
+  </head>
+  <body>
 
-		<header>
-			<Header></Header>
-		</header>
-		
-		<main class="site-background">
-			<slot />
-		</main>
+    <Header /> <!-- Menu/Navigation fixed -->
 
-		<footer>
-			<Footer></Footer>
-		</footer>
-			
-	</body>
+    <!-- Spacer SKAL ligge udenfor header -->
+    <div class="menu-spacer"></div>
+
+    <main class="site-background">
+      <slot />
+    </main>
+
+    <Footer />
+        
+  </body>
 </html>
 
 <style>
@@ -39,4 +38,14 @@ const backgroundImage = "/logo/alice_baggrund.png";
     background-repeat: no-repeat;
     min-height: 100vh;           /* sikrer billedet fylder hele */
   }
+
+  .menu-spacer {
+  height: 70px;
+}
+
+@media (min-width: 768px) {
+  .menu-spacer {
+    height: 110px;
+  }
+} 
 </style>
