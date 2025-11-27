@@ -1,0 +1,30 @@
+---
+interface Props {
+  date: string;
+  artist: string;
+  extraClass?: string;
+  highlight?: boolean;
+}
+
+const { date, artist, extraClass = "", highlight = false } = Astro.props;
+
+let colorClasses = highlight 
+  ? "bg-[#4A40FF] text-[#000000]" 
+  : "bg-[#E8A9C4] text-[#272727]";
+---
+
+<div class={`px-6 py-5 w-full font-suisse tracking-widest ${colorClasses} ${extraClass}`}>
+  <!-- Dato -->
+  <div class="text-[32px] md:text-[60px] leading-none mb-4 font-suisse tracking-widest">
+    {date}
+  </div>
+
+  <!-- Kunstnernavn + pil -->
+  <div class="relative text-[14px] md:text-[25px] leading-snug font-suisse tracking-widest pr-8">
+    {artist}
+    <!-- Pil -->
+    <span class="absolute bottom-0 right-0 text-[20px] md:text-[30px]">
+      →
+    </span>
+  </div>
+</div>

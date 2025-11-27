@@ -14,7 +14,7 @@ const menuItems = [
 <style>
   nav {
     /*  HER STYRER DU HØJDERNE */
-    --menu-height-desktop: 110px;
+    --menu-height-desktop: 90px;
     --menu-height-mobile: 70px;
   }
 
@@ -62,31 +62,32 @@ const menuItems = [
 </ul>
 
 
-  <!-- Mobile: top bar -->
-  <div class="md:hidden flex  justify-between items-center px-4 pt-4 text-[#272727] font-semibold ">
-    <img src="/logo/272727_logo.png" alt="Logo" class="h-9 w-auto" />
+<!-- Mobile: top bar -->
+<div class="md:hidden flex justify-between items-center px-4 pt-4 text-[#272727] font-semibold relative z-[20002]">
+  <img src="/logo/272727_logo.png" alt="Logo" class="h-9 w-auto" />
 
-    <button class="focus:outline-none" id="menuToggle" aria-label="Toggle Menu">
-  <svg
-    id="burgerIcon"
-    class="w-7 h-7"
-    fill="none"
-    stroke="currentColor"
-    viewBox="0 0 24 24"
-  >
-    <path stroke-width="1.5" d="M4 6h20M4 12h20M4 18h20" />
-  </svg>
-</button>
-  </div>
+  <button class="focus:outline-none z-[20003]" id="menuToggle" aria-label="Toggle Menu">
+    <svg
+      id="burgerIcon"
+      class="w-7 h-7"
+      fill="none"
+      stroke="currentColor"
+      viewBox="0 0 24 24"
+    >
+      <path stroke-width="1.5" d="M4 6h20M4 12h20M4 18h20" />
+    </svg>
+  </button>
+</div>
 
-  <!-- Mobile dropdown -->
-  <ul
+<!-- Mobile dropdown -->
+<ul
   id="mobileMenu"
-  class="md:hidden absolute left-0 top-full w-full z-50
+  class="md:hidden absolute left-0 top-full w-full
          flex flex-col gap-3 text-[#272727]
          bg-[url('/logo/alice_baggrund.png')] bg-cover bg-top bg-no-repeat
          px-4 py-4 border-b-3 border-b-[#4A40FF]
-         font-suisse menu-list"
+         font-suisse menu-list
+         z-[20003]"
   style="display: none;"
 >
   {menuItems.map(item => (

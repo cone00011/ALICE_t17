@@ -1,0 +1,99 @@
+---
+import Button from './Button.astro';
+let isOpen = false;
+---
+
+<div 
+  class="fixed left-4 top-[350px] md:top-[470px] "
+  x-data="{ open: false }"
+>
+  <!-- Sticky label -->
+  <button 
+  @click="open = true"
+  class="rotate-[-90deg] origin-left 
+         border-[3px] md:border-[5px]
+         text-[#272727] border-[#4A40FF]
+         px-3 py-2 text-[15px] lg:text-[20px]
+         font-suisse tracking-widest
+         bg-cover bg-center
+          hover:text-[#4A40FF] 
+         transition-colors duration-100"
+  style="background-image: url('/logo/alice_baggrund.png');"
+>
+  NYHEDSBREV
+</button>
+
+  <!-- Overlay -->
+  <div
+    x-show="open"
+    @click="open = false"
+    class="fixed inset-0 bg-black/30 lg:bg-transparent z-[19990]"
+  ></div>
+
+  <!-- Slide-out panel -->
+  <div
+    x-show="open"
+    x-transition
+    class="
+      fixed left-0
+      top-[15vh] md:top-[20vh]
+      h-[70vh] md:h-[70vh]
+      bg-white shadow-2xl
+      border-y-[3px] md:border-y-[5px]
+      border-r-[3px] md:border-r-[5px]
+      border-[#4A40FF]
+      flex items-center justify-center
+      p-6 overflow-y-auto
+      w-[90vw] max-w-[600px]
+      lg:w-[40vw] lg:max-w-none
+      z-[20001]
+    "
+    style="background-image: url('/logo/alice_baggrund.png');"
+  >
+    <!-- Close button -->
+    <button 
+      @click="open = false"
+      class="absolute right-6 top-6 text-2xl leading-none"
+    >
+      ✕
+    </button>
+
+    <!-- Centered content wrapper -->
+    <div class="w-full max-w-md flex flex-col justify-center">
+
+      <h2 class="text-[30px] font-suisse mb-6 tracking-widest text-[#272727]">
+        NYHEDSBREV
+      </h2>
+
+      <p class="text-sm leading-relaxed tracking-widest font-suisse mb-6 text-[#272727]">
+        Tilmeld dig vores nyhedsbrev og modtag løbende koncertanbefalinger,
+        tilbud, ALICE-nyheder og eksklusive presales.
+      </p>
+
+      <form class="flex flex-col gap-4">
+        <input 
+          type="text"
+          placeholder="Navn + efternavn"
+          class="border-[3px] md:border-[5px]
+                 border-[#E8A9C4]
+                 px-3 py-2 w-full
+                 focus:outline-none
+                 tracking-widest font-suisse"
+        />
+
+        <input 
+          type="email"
+          placeholder="Email"
+          class="border-[3px] md:border-[5px]
+                 border-[#E8A9C4]
+                 px-3 py-2 w-full
+                 focus:outline-none
+                 tracking-widest font-suisse"
+        />
+
+       <Button text="TILMELD" direction="right" />
+      </form>
+
+    </div>
+  </div>
+</div>

@@ -1,5 +1,25 @@
 ---
+// File: components/Button.astro
+
+interface Props {
+  text: string;
+  direction?: 'right' | 'down'; // pilens retning, default er 'right'
+}
+
+const { text, direction = 'right' } = Astro.props;
+
+// Vælg pil baseret på direction
+const arrow = direction === 'down' ? '↓' : '→';
 ---
-<div>
-    <button class="border-2 border-black"><slot /></button>
-</div>
+
+<button
+  type="button"
+  class="mt-2 text-[#272727]
+         text-[15px] md:text-[20px]
+         px-6 py-3
+         hover:text-[#4A40FF]
+         tracking-widest font-suisse
+         transition-colors duration-200"
+>
+  {text} {arrow}
+</button>

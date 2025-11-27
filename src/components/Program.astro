@@ -1,0 +1,48 @@
+---
+import Koncertcard from "./Koncertcard.astro";
+---
+
+<article>
+  <div class="grid grid-cols-6 grid-rows-6 md:grid-cols-10 md:gap-0 gap-4">
+
+    <h2 class="col-span-4 md:col-span-4 md:col-start-6 md:row-start-1 
+               text-[#272727] 
+               text-[30px] md:text-[80px] 
+               font-suisse tracking-widest 
+            
+    
+               ">
+        NOVEMBER
+    </h2>
+
+    <!-- Card 1 -->
+    <Koncertcard 
+      date="20/11" 
+      artist="Nadah el shazly "
+      extraClass="col-span-6 md:col-span-4 md:col-start-2 md:row-start-2"
+    />
+
+    <!-- Card 2 -->
+    <Koncertcard 
+      date="21/11" 
+      artist="Users + Syringe"
+       highlight
+      extraClass="col-span-6 md:col-span-4 md:col-start-6 md:row-start-3"
+    />
+
+    <!-- Card 3 -->
+    <Koncertcard 
+      date="22/11" 
+      artist="Etuk Ubong & The Etuk Philosphy"
+      extraClass="col-span-6 md:col-span-4 md:col-start-2 md:row-start-4"
+    />
+
+    <!-- Card 4 -->
+    <Koncertcard
+      date="23/11" 
+      artist="Athleas Sinfonietta Copenhagen"
+      extraClass="col-span-6 md:col-span-4 md:col-start-6 md:row-start-5"
+    />
+
+  </div>
+</article>
