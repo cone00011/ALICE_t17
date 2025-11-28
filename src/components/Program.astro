@@ -1,48 +1,219 @@
 ---
 import Koncertcard from "./Koncertcard.astro";
+
+const novemberConcerts = [
+  { date: "20/11", artist: "Nadah el shazly", highlight: false, month: "November", genre: "experimental" },
+  { date: "21/11", artist: "Users + Syringe", highlight: true,  month: "November", genre: "noise" },
+  { date: "22/11", artist: "Etuk Ubong & The Etuk Philosphy", highlight: false, month: "November", genre: "jazz" },
+  { date: "23/11", artist: "Athleas Sinfonietta Copenhagen", highlight: false, month: "November", genre: "classical" },
+  { date: "26/11", artist: "Ye vagabonds", highlight: true, month: "November", genre: "folk" },
+  { date: "28/11", artist: "Nyahh Records presents: Mohammad Syfkhan + Ultan O’Brien + HEDGLING", highlight: false, month: "November", genre: "electronic" },
+];
+
+const decemberConcerts = novemberConcerts.map(c => ({
+  ...c,
+  date: c.date.replace("/11", "/12"),
+  month: "December",
+}));
+
+const allConcerts = [...novemberConcerts, ...decemberConcerts];
 ---
 
-<article>
-  <div class="grid grid-cols-6 grid-rows-6 md:grid-cols-10 md:gap-0 gap-4">
+<!-- ========== FILTER MENU ========== -->
+<div class="w-full bg-[#E8A9C4] py-2 md:border-b-5 border-b-3 border-[#4A40FF] mb-10">
+  <div class="max-w-[1400px] mx-auto relative flex justify-center">
 
-    <h2 class="col-span-4 md:col-span-4 md:col-start-6 md:row-start-1 
-               text-[#272727] 
-               text-[30px] md:text-[80px] 
-               font-suisse tracking-widest 
-            
-    
-               ">
-        NOVEMBER
-    </h2>
+    <!-- MOBILE FILTER BUTTON -->
+    <button id="mobileFilterBtn"
+      class="md:hidden text-[#272727] text-[16px] px-6 py-3 tracking-widest font-suisse hover:text-[#4A40FF] transition">
+      FILTRERING ↓
+    </button>
 
-    <!-- Card 1 -->
-    <Koncertcard 
-      date="20/11" 
-      artist="Nadah el shazly "
-      extraClass="col-span-6 md:col-span-4 md:col-start-2 md:row-start-2"
-    />
+    <!-- FILTER WRAPPER -->
+    <div id="filterWrapper"
+      class="hidden md:flex flex-col md:flex-row gap-4 md:gap-20 justify-center items-center absolute md:static top-full left-1/2 -translate-x-1/2 md:translate-x-0 mt-2 md:mt-0 bg-[#E8A9C4] md:bg-transparent border-3 md:border-0 border-[#4A40FF] px-4 py-4 md:p-0 z-30 text-center md:text-left">
 
-    <!-- Card 2 -->
-    <Koncertcard 
-      date="21/11" 
-      artist="Users + Syringe"
-       highlight
-      extraClass="col-span-6 md:col-span-4 md:col-start-6 md:row-start-3"
-    />
+      <!-- Month dropdown -->
+      <div class="relative">
+        <button id="monthBtn"
+          class="text-[#272727] text-[15px] md:text-[20px] px-6 py-3 hover:text-[#4A40FF] tracking-widest font-suisse transition-colors">
+          MÅNED ↓
+        </button>
+        <div id="monthDropdown" class="hidden absolute left-1/2 -translate-x-1/2 mt-2 border-[#4A40FF] border-3 md:border-5 w-40 bg-[#E8A9C4] z-20 flex flex-col">
+          {["November","December"].map(month => (
+            <button
+              class="w-full text-center px-4 py-2 md:py-3 hover:text-[#4A40FF] text-[#272727] text-[14px] md:text-[20px] font-suisse tracking-widest"
+              data-month={month}
+            >
+              {month}
+            </button>
+          ))}
+        </div>
+      </div>
 
-    <!-- Card 3 -->
-    <Koncertcard 
-      date="22/11" 
-      artist="Etuk Ubong & The Etuk Philosphy"
-      extraClass="col-span-6 md:col-span-4 md:col-start-2 md:row-start-4"
-    />
+      <!-- Genre dropdown -->
+      <div class="relative">
+        <button id="genreBtn"
+          class="text-[#272727] text-[15px] md:text-[20px] px-6 py-3 hover:text-[#4A40FF] tracking-widest font-suisse transition-colors">
+          GENRE ↓
+        </button>
+        <div id="genreDropdown" class="hidden absolute left-1/2 -translate-x-1/2 mt-2 border-[#4A40FF] border-3 md:border-5 w-56 bg-[#E8A9C4] z-20 flex flex-col">
+          {["experimental","noise","jazz","classical","folk","electronic"].map(genre => (
+            <button
+              class="w-full text-center px-4 py-2 md:py-3 hover:text-[#4A40FF] text-[#272727] text-[14px] md:text-[20px] font-suisse tracking-widest capitalize"
+              data-genre={genre}
+            >
+              {genre}
+            </button>
+          ))}
+        </div>
+      </div>
 
-    <!-- Card 4 -->
-    <Koncertcard
-      date="23/11" 
-      artist="Athleas Sinfonietta Copenhagen"
-      extraClass="col-span-6 md:col-span-4 md:col-start-6 md:row-start-5"
-    />
+      <!-- Highlight -->
+      <button id="highlightBtn"
+        class="text-[#272727] text-[15px] md:text-[20px] px-6 py-3 hover:text-[#4A40FF] tracking-widest font-suisse transition-colors">
+        ALICE'S ANBEFALING
+      </button>
 
+    </div>
   </div>
+</div>
+
+
+<!-- ========== CONCERT GRID ========== -->
+<article id="concertContainer">
+  {["November","December"].map(month => {
+    const concerts = allConcerts.filter(c => c.month === month);
+    return (
+      <div key={month} class={`concert-section ${month === "December" ? "mt-15 md:mt-20" : ""}`}>
+        <div class="grid grid-cols-6 md:grid-cols-10 gap-4 md:gap-0 auto-rows-auto stagger-grid px-15 md:px-0">
+          <h2 class="col-span-4 md:col-span-4 md:col-start-6 text-[#272727] text-[30px] md:text-[80px] font-suisse tracking-widest">
+            {month}
+          </h2>
+
+          {concerts.map((c, i) => {
+            const colStart = (i % 2 === 0) ? 2 : 6;
+            const rowStart = i + 2;
+            const style = `--col-start:${colStart}; --row-start:${rowStart};`;
+
+            return (
+              <div
+                class="concert col-span-6 md:col-span-4"
+                style={style}
+                data-month={c.month}
+                data-genre={c.genre}
+                data-highlight={c.highlight}
+              >
+                <Koncertcard
+                  date={c.date}
+                  artist={c.artist}
+                  highlight={c.highlight}
+                  month={c.month}
+                  genre={c.genre}
+                />
+              </div>
+            )
+          })}
+        </div>
+      </div>
+    )
+  })}
 </article>
+
+<script>
+const monthBtn = document.getElementById('monthBtn');
+const genreBtn = document.getElementById('genreBtn');
+const monthDropdown = document.getElementById('monthDropdown');
+const genreDropdown = document.getElementById('genreDropdown');
+const highlightBtn = document.getElementById('highlightBtn');
+const concertContainer = document.getElementById('concertContainer');
+const mobileFilterBtn = document.getElementById('mobileFilterBtn');
+const filterWrapper = document.getElementById('filterWrapper');
+
+let currentMonth = null;
+let currentGenre = null;
+
+// Mobile filter toggle
+mobileFilterBtn.addEventListener('click', () => {
+  filterWrapper.classList.toggle('hidden');
+});
+
+// Desktop dropdowns
+monthBtn.addEventListener('click', () => {
+  monthDropdown.classList.toggle('hidden');
+  genreDropdown.classList.add('hidden');
+});
+
+genreBtn.addEventListener('click', () => {
+  genreDropdown.classList.toggle('hidden');
+  monthDropdown.classList.add('hidden');
+});
+
+// Month filter
+monthDropdown.querySelectorAll('button').forEach(btn => {
+  btn.addEventListener('click', () => {
+    currentMonth = btn.dataset.month;
+    filterConcerts();
+    monthDropdown.classList.add('hidden');
+    filterWrapper.classList.add('hidden');
+  });
+});
+
+// Genre filter
+genreDropdown.querySelectorAll('button').forEach(btn => {
+  btn.addEventListener('click', () => {
+    currentGenre = btn.dataset.genre;
+    filterConcerts();
+    genreDropdown.classList.add('hidden');
+    filterWrapper.classList.add('hidden');
+  });
+});
+
+// Highlight filter
+highlightBtn.addEventListener('click', () => {
+  currentMonth = null;
+  currentGenre = null;
+  filterConcerts(true);
+  filterWrapper.classList.add('hidden');
+});
+
+function filterConcerts(highlightOnly = false) {
+  const allCards = concertContainer.querySelectorAll('.concert');
+
+  allCards.forEach(card => {
+    const cardMonth = card.dataset.month;
+    const cardGenre = card.dataset.genre;
+    const cardHighlight = card.dataset.highlight === 'true';
+
+    let visible = true;
+
+    if (highlightOnly) {
+      visible = cardHighlight;
+    } else {
+      if (currentMonth) visible = visible && cardMonth === currentMonth;
+      if (currentGenre) visible = visible && cardGenre === currentGenre;
+    }
+
+    card.style.display = visible ? '' : 'none';
+  });
+}
+
+// Click outside closes dropdowns
+document.addEventListener('click', (e) => {
+  if (!monthBtn.contains(e.target)) monthDropdown.classList.add('hidden');
+  if (!genreBtn.contains(e.target)) genreDropdown.classList.add('hidden');
+});
+</script>
+
+<style>
+@media (min-width: 768px) {
+  .stagger-grid {
+    grid-auto-rows: minmax(120px, auto);
+  }
+
+  .stagger-grid > .concert {
+    grid-column: var(--col-start) / span 4;
+    grid-row-start: var(--row-start);
+  }
+}
+</style>

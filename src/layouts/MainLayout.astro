@@ -3,8 +3,8 @@ import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import '../styles/tailwind.css';
 const { title } = Astro.props;
-const backgroundImage = "/logo/alice_baggrund.png";
 ---
+
 <html lang="en">
   <head>
     <meta charset="utf-8" />
@@ -12,34 +12,66 @@ const backgroundImage = "/logo/alice_baggrund.png";
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
     <title>{Astro.props.title}</title>
-    <script defer src="https://unpkg.com/tailwindcss-intersect@2.x.x/dist/observer.min.js"></script>
   </head>
-  <body>
+  <body class="relative">
 
     <Header /> <!-- Menu/Navigation fixed -->
 
-    <!-- Spacer SKAL ligge udenfor header -->
     <div class="menu-spacer"></div>
 
-    <main class="site-background">
-      <slot />
+    <main class="site-background relative">
+
+      <!-- Desktop Grid overlay -->
+      <div class="absolute inset-0 pointer-events-none z-0 hidden md:grid">
+        <div class="grid h-full w-full"
+             style="grid-template-columns: repeat(10, 1fr); grid-template-rows: repeat(10, 10vw);">
+          {Array.from({ length: 10 }).map((_, row) =>
+            Array.from({ length: 10 }).map((_, col) => (
+              <div class="border border-[#4A40FF]/30" style="border-width:0 1px 1px 0;"></div>
+            ))
+          )}
+        </div>
+      </div>
+
+      <!-- Mobile Grid overlay -->
+<div class="absolute inset-0 pointer-events-none z-0 md:hidden">
+  <div class="grid h-full w-full"
+       style="
+         grid-template-columns: repeat(6, 16.6667vw);
+         grid-template-rows: repeat(15, 16vw);
+       ">
+    {Array.from({ length: 15 }).map((_, row) =>
+      Array.from({ length: 6 }).map((_, col) => (
+        <div class="border border-[#4A40FF]/30" style="border-width:0 1px 1px 0;"></div>
+      ))
+    )}
+  </div>
+</div>
+
+
+      <!-- Content -->
+      <div class="relative z-10">
+        <slot />
+      </div>
+
     </main>
 
     <Footer />
-        
+
   </body>
 </html>
 
 <style>
-  .site-background {
-    background-image: url(/logo/alice_baggrund.png);
-    background-size: cover;      /* fylder hele siden */
-    background-position: center; /* centrerer billedet */
-    background-repeat: no-repeat;
-    min-height: 100vh;           /* sikrer billedet fylder hele */
-  }
+.site-background {
+  background-image: url(/logo/alice_baggrund.png);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+}
 
-  .menu-spacer {
+
+.menu-spacer {
   height: 70px;
 }
 
@@ -47,5 +79,6 @@ const backgroundImage = "/logo/alice_baggrund.png";
   .menu-spacer {
     height: 90px;
   }
-} 
+}
 </style>
+

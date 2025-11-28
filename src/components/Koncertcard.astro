@@ -4,16 +4,33 @@ interface Props {
   artist: string;
   extraClass?: string;
   highlight?: boolean;
+  month?: string;   // fx "November"
+  genre?: string;   // fx "folk", "electronic"
 }
 
-const { date, artist, extraClass = "", highlight = false } = Astro.props;
+const {
+  date,
+  artist,
+  extraClass = "",
+  highlight = false,
+  month = "",
+  genre = "",
+} = Astro.props;
 
-let colorClasses = highlight 
-  ? "bg-[#4A40FF] text-[#000000]" 
+let colorClasses = highlight
+  ? "bg-[#4A40FF] text-[#000000]"
   : "bg-[#E8A9C4] text-[#272727]";
 ---
 
-<div class={`px-6 py-5 w-full font-suisse tracking-widest ${colorClasses} ${extraClass}`}>
+<!--
+  month og genre er ikke synlige, men findes som data-attributes for filtrering:
+  <div data-month="November" data-genre="folk"> ...
+-->
+<div
+  class={`px-6 py-5 w-full font-suisse tracking-widest ${colorClasses} ${extraClass}`}
+  data-month={month}
+  data-genre={genre}
+>
   <!-- Dato -->
   <div class="text-[32px] md:text-[60px] leading-none mb-4 font-suisse tracking-widest">
     {date}
