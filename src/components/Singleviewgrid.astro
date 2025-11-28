@@ -1,4 +1,6 @@
 ---
+import Button from "./Button.astro";
+
 
 ---
 
@@ -9,7 +11,7 @@
 
     <div class="grid-item col-start-2 col-span-5 row-start-2 row-span-3 md:col-start-6 md:col-span-4 md:row-start-2 md:row-span-4 flex ml-3 pointer-events-none">
       <h1 class="text-5xl md:text-[110px] font-suisse">Nadah El Shazly  + 
-Nova Varnrable</h1>
+       Nova Varnrable</h1>
     </div> 
 
     <div class="grid-item col-start-2 col-span-5 row-start-3 row-span-1 mt-10 md:col-start-6 md:col-span-3 md:row-start-5 md:row-span-4 ml-3 flex  pointer-events-none">
@@ -26,6 +28,35 @@ Nova Varnrable</h1>
       <img src="/img/nadah.webp" alt="nadah" class="object-cover w-full h-full" />
     </div>
 
+     <div class="grid-item col-start-2 col-span-4 row-start-9 row-span-4 mt-8 leading-relaxed md:col-start-2 md:col-span-3 md:row-start-6 md:row-span-2 flex pointer-events-none">
+      <p class="text-[16px] md:text-[20px] font-suisse">Torsdag 20.11.25<br>Dørene åbner kl: 19:00<br>Koncerten starter kl: 20:00<br>Stående</p>
+    </div> 
+
+     <div class="grid-item hidden col-start-1 col-span-1 row-start-7 row-span-1 md:col-start-9 md:col-span-1 md:row-start-8 md:row-span-1 md:flex ">
+      <img src="/blok/lilleblok.png" alt="Logo" />
+    </div>
+   
+    <!-- nora_billede -->
+    <div class="grid-item col-start-3 col-span-4 row-start-12 row-span-4 md:col-start-6 md:col-span-4 md:row-start-9 md:row-span-4 flex ">
+      <img src="/img/nora.webp" alt="nora" class="object-cover w-full h-full" />
+    </div>
+
+    <div class="grid-item col-start-2 col-span-4 row-start-17 row-span-5 leading-relaxed md:col-start-2 md:col-span-4 md:row-start-9 md:row-span-2 flex mt-15 pointer-events-none">
+      <p class="text-[16px] md:text-[20px] font-suisse">Velkommen på klubben, hvor hjerterne bløder, og hvor hjerterne brænder. Se frem til en koncertaften i den eksperimenterende, elektroniske musiks tegn, når Nova Varnrable og Nadah El Shazly fylder koncertsalen med et spektrum af lyde på tværs af genrer, traditioner og udtryk.</p>
+    </div> 
+
+     <div class="grid-item hidden col-start-1 col-span-1 row-start-7 row-span-1 md:col-start-5 md:col-span-1 md:row-start-11 md:row-span-1 md:flex ">
+      <img src="/blok/lilleblok.png" alt="Logo" />
+    </div>
+
+     <div class="grid-item hidden col-start-5 col-span-2 row-start-4 row-span-1 md:col-start-4 md:col-span-2 md:row-start-12 md:row-span-1 md:flex ">
+      <img src="/blok/langblok.png" alt="Logo" />
+    </div>
+
+     <div class="grid-item col-start-5 col-span-2 row-start-21 row-span-1 md:col-start-8 md:col-span-2 md:row-start-13 md:row-span-1 flex ">
+      <img src="/blok/langblok.png" alt="Logo" />
+    </div>
+
     <div class="grid-item col-start-5 col-span-2 row-start-4 row-span-1 md:col-start-5 md:col-span-2 md:row-start-1 md:row-span-1 flex ">
       <img src="/blok/langblok.png" alt="Logo" />
     </div>
@@ -37,6 +68,88 @@ Nova Varnrable</h1>
      <div class="grid-item col-start-1 col-span-1 row-start-7 row-span-1 md:col-start-1 md:col-span-1 md:row-start-5 md:row-span-1 flex ">
       <img src="/blok/lilleblok_stroke.png" alt="Logo" />
     </div>
+
+  <div class="grid-item col-start-2 col-span-3 row-start-21 row-span-3 md:col-start-7 md:col-span-3 md:row-start-15 md:row-span-3 relative">
+
+     <!-- BILLEDET -->
+     <img src="/img/nadah.webp" alt="nadah" class="object-cover w-full h-full block" />
+
+     <!-- PLAY-KNAP (overlay) -->
+    <button 
+    type="button"
+    data-audio-id="nadah-audio"
+    class="absolute inset-0 flex items-center justify-center 
+           bg-black/20 hover:bg-black/30 
+           text-white text-3xl rounded-full m-auto h-16 w-16">
+    ▶
+    </button>
+
+    <!-- AUDIO -->
+  
+  </div>
+
+  <div class="grid-item col-start-3 col-span-4 row-start-25 row-span-1 md:col-start-2 md:col-span-4 md:row-start-14 md:row-span-2 flex pointer-events-none">
+      <h3 class="text-3xl md:text-[60px] font-suisse">Nadah el shazly</h3>
+    </div> 
+
+    <div class="grid-item col-start-2 col-span-5 row-start-26 row-span-4 md:col-start-2 md:col-span-4 md:row-start-15 md:row-span-4 flex flex-col gap-4">
+
+   <p class="text-[16px] md:text-[20px] font-suisse leading-relaxed">
+    Den egyptiske sangerinde og komponist Nadah El Shazly<br>
+    er en af hovedskikkelserne på den eksperimenterende<br>
+    musikscene i Cairo. Hun forener rødder fra den traditionelle<br>
+    arabiske musik med moderne jazz, elektronik og eksperimenterende rock, og for den genreblanding, og for hendes fortryllende vokaler<br>
+    og avant-garde arrangementer, har hun vundet fans verden over.
+   </p>
+
+   <Button>Læs mere →</Button>
+
+  </div>
+
+   <div class="grid-item col-start-1 col-span-2 row-start-30 row-span-1 md:col-start-4 md:col-span-2 md:row-start-18 md:row-span-1 flex ">
+      <img src="/blok/langblok.png" alt="Logo" />
+    </div>
+
+    <div class="grid-item col-start-6 col-span-1 row-start-30 row-span-1 md:col-start-7 md:col-span-1 md:row-start-6 md:row-span-1 flex md:hidden ">
+      <img src="/blok/lilleblok.png" alt="Logo" />
+    </div>
+
+  <div class="grid-item col-start-3 col-span-3 row-start-31 row-span-3 md:col-start-2 md:col-span-3 md:row-start-19 md:row-span-3 relative">
+
+     <!-- BILLEDET -->
+     <img src="/img/nora.webp" alt="nora" class="object-cover w-full h-full block" />
+
+     <!-- PLAY-KNAP (overlay) -->
+    <button 
+    type="button"
+    data-audio-id="nadah-audio"
+    class="absolute inset-0 flex items-center justify-center 
+           bg-black/20 hover:bg-black/30 
+           text-white text-3xl rounded-full m-auto h-16 w-16">
+    ▶
+    </button>
+
+    <!-- AUDIO -->
+  
+  </div>
+
+    <div class="grid-item col-start-6 col-span-2 row-start-32 row-span-2 md:col-start-10 md:col-span-2 md:row-start-17 md:row-span-2 flex ">
+      <img src="/blok/langblok_stroke_oprejst.png" alt="Logo" />
+    </div>
+
+      <div class="grid-item col-start-3 col-span-4 row-start-35 row-span-1 md:col-start-6 md:col-span-4 md:row-start-19 md:row-span-2 flex pointer-events-none">
+      <h3 class="text-3xl md:text-[60px] font-suisse">Nova Varnrable</h3>
+    </div> 
+
+    <div class="grid-item col-start-2 col-span-5 row-start-36 row-span-4 md:col-start-6 md:col-span-4 md:row-start-20 md:row-span-4 flex flex-col gap-4">
+
+   <p class="text-[16px] md:text-[20px] font-suisse leading-relaxed">
+    Med glitches former Nova Varnrable gribende fortællinger. Den etiopisk-norske kunstner og musikproducer<br>med base i København, er internationalt kendt for sin eksperimenterende elektroniske musik. Hendes sange bevæger sig gennem et spektrum af lyde, der bryder genrer, bygger scenarier op, samt udforsker kompositionens muligheder.  
+   </p>
+
+   <Button>Læs mere →</Button>
+
+  </div>
    
     <div class="grid-item col-start-5 col-span-2 row-start-9 row-span-1 md:col-start-7 md:col-span-2 md:row-start-7 md:row-span-1 flex ">
       <img src="/blok/langblok.png" alt="Logo" />
@@ -66,7 +179,7 @@ Nova Varnrable</h1>
 .hero-grid {
   display: grid;
   grid-template-columns: repeat(10, 1fr);
-  grid-template-rows: repeat(30, 10vw);
+  grid-template-rows: repeat(40, 10vw);
   width: 100%;
   height: 100%;
   
@@ -82,7 +195,7 @@ Nova Varnrable</h1>
 @media (max-width: 768px) {
   .hero-grid {
     grid-template-columns: repeat(6, 1fr);
-    grid-template-rows: repeat(30, 16vw);
+    grid-template-rows: repeat(40, 16vw);
   }
 }
 </style>
