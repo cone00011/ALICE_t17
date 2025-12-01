@@ -1,6 +1,6 @@
 ---
 import Button from "./Button.astro";
-
+import TicketButton from "../components/TicketButton.astro";
 
 ---
 
@@ -102,7 +102,10 @@ import Button from "./Button.astro";
     og avant-garde arrangementer, har hun vundet fans verden over.
    </p>
 
-   <Button text="Læs mere" direction="right" />
+   <div class="grid-item col-start-1 col-span-2 row-start-40 
+            md:col-start-1 md:col-span-2 md:row-start-16">
+    <Button text="Læs mere" direction="right" />
+   </div>
 
   </div>
 
@@ -147,7 +150,10 @@ import Button from "./Button.astro";
     Med glitches former Nova Varnrable gribende fortællinger. Den etiopisk-norske kunstner og musikproducer<br>med base i København, er internationalt kendt for sin eksperimenterende elektroniske musik. Hendes sange bevæger sig gennem et spektrum af lyde, der bryder genrer, bygger scenarier op, samt udforsker kompositionens muligheder.  
    </p>
 
-   <Button text="Læs mere" direction="right" />
+   <div class="grid-item col-start-2 col-span-2 row-start-40 
+            md:col-start-1 md:col-span-2 md:row-start-24">
+    <Button text="Læs mere" direction="right" />
+   </div>
 
   </div>
    
@@ -171,8 +177,18 @@ import Button from "./Button.astro";
       <img src="/blok/lilleblok_stroke.png" alt="Logo" />
     </div>
 
-  </div>
+<!-- KØB BILLET – fast bar nederst -->
+<div class="fixed bottom-0 left-0 right-0 mb-10 z-50">
+  <TicketButton
+    label="KØB BILLET"
+    fromLabel="Fra"
+    priceLabel="160 dkk"
+    feeLabel="+ GEBYR"
+  />
 </div>
+
+</div> 
+</div> 
 </article>
 
 <style>
