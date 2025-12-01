@@ -3,31 +3,32 @@ import Button from './Button.astro';
 let isOpen = false;
 ---
 
+
 <div 
-  class="fixed left-4 top-[350px] md:top-[470px] "
+  class="fixed left-4 top-[350px] md:top-[470px] z-[99999]"
   x-data="{ open: false }"
 >
   <!-- Sticky label -->
   <button 
-  @click="open = true"
-  class="rotate-[-90deg] origin-left 
-         border-[3px] md:border-[5px]
-         text-[#272727] border-[#4A40FF]
-         px-3 py-2 text-[15px] lg:text-[20px]
-         font-suisse tracking-widest
-         bg-cover bg-center
-          hover:text-[#4A40FF] 
-         transition-colors duration-100"
-  style="background-image: url('/logo/alice_baggrund.png');"
->
-  NYHEDSBREV
-</button>
+    @click="open = true"
+    class="z-[99999] rotate-[-90deg] origin-left 
+           border-[3px] md:border-[5px]
+           text-[#272727] border-[#4A40FF]
+           px-3 py-2 text-[15px] lg:text-[20px]
+           font-suisse tracking-widest
+           bg-cover bg-center
+           hover:text-[#4A40FF] 
+           transition-colors duration-100"
+    style="background-image: url('/logo/alice_baggrund.png');"
+  >
+    NYHEDSBREV
+  </button>
 
   <!-- Overlay -->
   <div
     x-show="open"
     @click="open = false"
-    class="fixed inset-0 bg-black/30 lg:bg-transparent z-[19990]"
+    class="fixed inset-0 bg-black/30 lg:bg-transparent z-[99998]"
   ></div>
 
   <!-- Slide-out panel -->
@@ -46,7 +47,7 @@ let isOpen = false;
       p-6 overflow-y-auto
       w-[90vw] max-w-[600px]
       lg:w-[40vw] lg:max-w-none
-      z-[20001]
+      z-[100000]
     "
     style="background-image: url('/logo/alice_baggrund.png');"
   >
@@ -91,9 +92,10 @@ let isOpen = false;
                  tracking-widest font-suisse"
         />
 
-       <Button text="TILMELD" direction="right" />
+        <Button text="TILMELD" direction="right" />
       </form>
 
     </div>
   </div>
 </div>
+

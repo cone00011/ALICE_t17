@@ -13,43 +13,42 @@ const { title } = Astro.props;
     <meta name="generator" content={Astro.generator} />
     <title>{Astro.props.title}</title>
   </head>
+
   <body class="relative">
 
-    <Header /> <!-- Menu/Navigation fixed -->
-
+    <Header />
     <div class="menu-spacer"></div>
 
-    <main class="site-background relative">
+    <!-- ✅ BACKGROUND LAYER -->
+    <main class="site-background relative overflow-hidden">
 
-      <!-- Desktop Grid overlay -->
-      <div class="absolute inset-0 pointer-events-none z-0 hidden md:grid">
-        <div class="grid h-full w-full"
-             style="grid-template-columns: repeat(10, 1fr); grid-template-rows: repeat(10, 10vw);">
-          {Array.from({ length: 10 }).map((_, row) =>
-            Array.from({ length: 10 }).map((_, col) => (
+      <!-- ✅ GRID OVERLAY (OVER BG, UNDER CONTENT) -->
+
+      <!-- Desktop grid -->
+      <div class="absolute inset-0 pointer-events-none z-0 hidden md:block">
+        <div class="grid w-full min-h-full"
+             style="grid-template-columns: repeat(10, 1fr); grid-auto-rows: 10vw;">
+          {Array.from({ length: 300 }).map(() =>
+            Array.from({ length: 10 }).map(() => (
               <div class="border border-[#4A40FF]/30" style="border-width:0 1px 1px 0;"></div>
             ))
           )}
         </div>
       </div>
 
-      <!-- Mobile Grid overlay -->
-<div class="absolute inset-0 pointer-events-none z-0 md:hidden">
-  <div class="grid h-full w-full"
-       style="
-         grid-template-columns: repeat(6, 16.6667vw);
-         grid-template-rows: repeat(15, 16vw);
-       ">
-    {Array.from({ length: 15 }).map((_, row) =>
-      Array.from({ length: 6 }).map((_, col) => (
-        <div class="border border-[#4A40FF]/30" style="border-width:0 1px 1px 0;"></div>
-      ))
-    )}
-  </div>
-</div>
+      <!-- Mobile grid -->
+      <div class="absolute inset-0 pointer-events-none z-0 md:hidden">
+        <div class="grid w-full min-h-full"
+             style="grid-template-columns: repeat(6, 16.6667vw); grid-auto-rows: 16vw;">
+          {Array.from({ length: 400 }).map(() =>
+            Array.from({ length: 6 }).map(() => (
+              <div class="border border-[#4A40FF]/30" style="border-width:0 1px 1px 0;"></div>
+            ))
+          )}
+        </div>
+      </div>
 
-
-      <!-- Content -->
+      <!-- ✅ CONTENT LAYER (OVER GRID) -->
       <div class="relative z-10">
         <slot />
       </div>
@@ -62,14 +61,13 @@ const { title } = Astro.props;
 </html>
 
 <style>
-.site-background {
+	.site-background {
   background-image: url(/logo/alice_baggrund.png);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   min-height: 100vh;
 }
-
 
 .menu-spacer {
   height: 70px;
@@ -80,5 +78,6 @@ const { title } = Astro.props;
     height: 90px;
   }
 }
+
 </style>
 
