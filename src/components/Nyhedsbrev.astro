@@ -5,8 +5,27 @@ let isOpen = false;
 
 
 <div 
-  class="fixed left-4 top-[350px] md:top-[470px] z-[99999]"
-  x-data="{ open: false }"
+  x-data="{ open: false, show: true }" 
+  x-init="() => {
+    const btn = $el;
+    const footer = document.querySelector('footer'); 
+    const topOffset = window.innerWidth >= 768 ? 470 : 350; // top på desktop/mobil
+    const updatePosition = () => {
+      const footerRect = footer.getBoundingClientRect();
+      if (footerRect.top < window.innerHeight + window.scrollY - btn.offsetHeight - 20) {
+        // footer nærmer sig: fade out
+        show = false;
+      } else {
+        show = true;
+      }
+    };
+    window.addEventListener('scroll', updatePosition);
+    window.addEventListener('resize', updatePosition);
+    updatePosition();
+  }"
+  class="fixed left-4 z-[99999] transition-all duration-200"
+  :class="{ 'opacity-0 pointer-events-none': !show, 'opacity-100': show }"
+  :style="`top: ${window.innerWidth >= 768 ? '470px' : '350px'}`"
 >
   <!-- Sticky label -->
   <button 
