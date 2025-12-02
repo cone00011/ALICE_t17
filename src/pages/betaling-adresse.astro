@@ -1,0 +1,134 @@
+---
+import MainLayout from "../layouts/MainLayout.astro";
+import KobsInfoBox from "../components/KobsInfoBox.astro";
+---
+
+<MainLayout title="Gennemfør dit køb – Adresse">
+  <!-- giver luft under headeren, så vi er under menuen -->
+  <article>
+    <div class="relative w-full">
+      <!-- hero-grid: IKKE absolute her -->
+      <div class="hero-grid w-full h-full absolute inset-0 overflow-hidden">
+
+        <div class="grid-item col-start-1 col-span-6 row-start-1 row-span-1 md:col-start-3 md:col-span-6 md:row-start-1 md:row-span-1 md:mt-15 flex items-center justify-center pointer-events-none">
+          <h1 class="font-suisse text-[20px] md:text-[32px] tracking-[0.25em]">
+            Gennemfør dit køb
+          </h1>
+        </div>
+
+        <!-- STEPPER -->
+       <div class="grid-item col-start-1 col-span-8 row-start-2 row-span-1 md:col-start-3 md:col-span-6 md:row-start-2 md:mt-15 md:row-span-1 flex gap-4 justify-center items-start">
+          <!-- 1. Billetter (aktiv) -->
+          <button
+            class="px-6 py-2 md:px-10 md:py-3
+                   border-2 border-[#3B2CFF] bg-[#E8A9C4]
+                   font-suisse text-[12px] md:text-[14px] md:border-3 tracking-[0.16em] uppercase
+                   h-auto">
+            1. Billetter
+          </button>
+
+          <!-- 2. Kunde -->
+          <button
+            class="px-6 py-2 md:px-10 md:py-3
+                   border-2 border-[#3B2CFF] bg-[#E8A9C4]
+                   font-suisse text-[12px] md:text-[14px] md:border-3 tracking-[0.16em] uppercase
+                   h-auto">
+            2. Kunde
+          </button>
+
+          <!-- 3. Kvittering -->
+          <button
+            class="px-6 py-2 md:px-10 md:py-3
+                   border-2 border-[#3B2CFF] bg-[#F2F2F2]
+                   font-suisse text-[12px] md:text-[14px] md:border-3 tracking-[0.16em] uppercase
+                   h-auto">
+            3. Kvittering
+          </button>
+        </div>
+
+        <!-- UNDER OVERSKRIFT -->
+        <div
+          class="grid-item col-start-2 col-span-4 row-start-3 row-span-1 md:col-start-3 md:col-span-6 md:row-start-3 flex justify-center items-center">
+          <h2 class="font-suisse text-[18px] md:text-[22px] tracking-[0.18em]">
+            Adresse
+          </h2>
+        </div>
+
+        <!-- ADRESSE-BOKSEN -->
+        <div
+          class="grid-item col-start-2 col-span-4 row-start-4 row-span-5
+                     md:col-start-2 md:col-span-8 md:row-start-4 md:row-span-3 flex"
+        >
+          <KobsInfoBox
+            eventTitle="Nadah El Shazly + Nova Varnrable"
+            buttonHref="/betaling-rabat"
+            buttonLabel="VIDERE →"
+          >
+            <!-- ADRESSE-FELTER -->
+
+            <div>
+              <label class="block text-[12px] md:text-[14px] mb-1">Adresse</label>
+              <input
+                class="w-full border-2 md:border-3 border-[#E8A9C4] h-10 px-2 bg-transparent"
+                type="text"
+              />
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div>
+                <label class="block text-[12px] md:text-[14px] mb-1">Postnr</label>
+                <input
+                  class="w-full border-2 md:border-3 border-[#E8A9C4] h-10 px-2 bg-transparent"
+                  type="text"
+                />
+              </div>
+
+              <div>
+                <label class="block text-[12px] md:text-[14px] mb-1">By</label>
+                <input
+                  class="w-full border-2 md:border-3 border-[#E8A9C4] h-10 px-2 bg-transparent"
+                  type="text"
+                />
+              </div>
+            </div>
+
+            <div>
+              <label class="block text-[12px] md:text-[14px] mb-1">Land</label>
+              <input
+                class="w-full border-2 md:border-3 border-[#E8A9C4] h-10 px-2 bg-transparent"
+                type="text"
+              />
+            </div>
+          </KobsInfoBox>
+        </div>
+
+      </div>
+    </div>
+  </article>
+
+  <style>
+    .hero-grid {
+      display: grid;
+      grid-template-columns: repeat(10, 1fr);
+      grid-template-rows: repeat(6, 10vw);
+      width: 100%;
+      /* vigtig: min-h så der ER højde nok */
+      min-height: 60vh;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .grid-item {
+      position: relative;
+      overflow: hidden;
+    }
+
+    @media (max-width: 768px) {
+      .hero-grid {
+        grid-template-columns: repeat(6, 1fr);
+        grid-template-rows: repeat(7, 16vw);
+      }
+    }
+  </style>
+</MainLayout>
+
