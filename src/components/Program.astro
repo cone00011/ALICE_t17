@@ -186,31 +186,35 @@ highlightBtn.addEventListener('click', () => {
 });
 
 function filterConcerts(highlightOnly = false) {
-  const allCards = concertContainer.querySelectorAll('.concert');
+  const allSections = document.querySelectorAll('.concert-section');
 
-  allCards.forEach(card => {
-    const cardMonth = card.dataset.month;
-    const cardGenre = card.dataset.genre;
-    const cardHighlight = card.dataset.highlight === 'true';
+  allSections.forEach(section => {
+    const concerts = section.querySelectorAll('.concert');
+    let sectionVisible = false;
 
-    let visible = true;
+    concerts.forEach(card => {
+      const cardMonth = card.dataset.month;
+      const cardGenre = card.dataset.genre;
+      const cardHighlight = card.dataset.highlight === 'true';
 
-    if (highlightOnly) {
-      visible = cardHighlight;
-    } else {
-      if (currentMonth) visible = visible && cardMonth === currentMonth;
-      if (currentGenre) visible = visible && cardGenre === currentGenre;
-    }
+      let visible = true;
 
-    card.style.display = visible ? '' : 'none';
+      if (highlightOnly) {
+        visible = cardHighlight;
+      } else {
+        if (currentMonth) visible = visible && cardMonth === currentMonth;
+        if (currentGenre) visible = visible && cardGenre === currentGenre;
+      }
+
+      card.style.display = visible ? '' : 'none';
+      if (visible) sectionVisible = true;
+    });
+
+    // Vis eller skjul månedstitlen baseret på om der er nogle synlige kort
+    section.style.display = sectionVisible ? '' : 'none';
   });
 }
 
-// Click outside closes dropdowns
-document.addEventListener('click', (e) => {
-  if (!monthBtn.contains(e.target)) monthDropdown.classList.add('hidden');
-  if (!genreBtn.contains(e.target)) genreDropdown.classList.add('hidden');
-});
 </script>
 
 <style>

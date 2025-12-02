@@ -1,31 +1,30 @@
 ---
-// Menu.astro
+
+import Program from './Program.astro';
+
 const menuItems = [
-  "PROGRAM",
-  "OM ALICE",
-  "GAVEKORT",
-  "FRIVLLIG",
-  "MEDLEMSKAB",
-  "GÆSTEBOG",
-  "EN/DA"
+  { label: "PROGRAM", href: "/#program" },
+  { label: "OM ALICE", href: "/omalice" },
+  { label: "GAVEKORT", href: "/gavekort" },
+  { label: "FRIVLLIG", href: "/frivillig" },
+  { label: "MEDLEMSKAB", href: "/medlemskab" },
+  { label: "GÆSTEBOG", href: "/gaestebog" },
+  { label: "EN/DA", href: "/en" }
 ];
 ---
 
 <style>
   nav {
-    /*  HER STYRER DU HØJDERNE */
     --menu-height-desktop: 90px;
     --menu-height-mobile: 70px;
   }
 
-  /* Menu styling: apply Suisse Int'l regular and ~5% letter-spacing */
   .menu-list {
     letter-spacing: 0.05em;
     font-family: var(--font-family-suisse);
     font-weight: 400;
   }
 
-  /* Highlight color for specific menu items (e.g., EN/DA) */
   .menu-item-highlight {
     color: #4A40FF;
   }
@@ -49,75 +48,94 @@ const menuItems = [
 >
 
   <!-- Desktop menu -->
-<ul class="hidden md:flex justify-center gap-20 pt-10 text-[#272727] text-[20px] font-suisse menu-list">
-  {menuItems.map(item => (
-    <li
-      class={`cursor-pointer ${item === "EN/DA" 
-        ? "menu-item-highlight" 
-        : "hover:text-[#4A40FF]"}`}
-    >
-      {item}
-    </li>
-  ))}
-</ul>
+<div class="hidden md:flex items-center justify-center gap-20 pt-7 text-[#272727] text-[20px] font-suisse">
+  
+  <!-- Logo til venstre -->
+  <a href="/" class=" flex-shrink-0">
+    <img src="/logo/272727_logo.png" alt="Logo" class="h-10 w-auto" />
+  </a>
 
-
-<!-- Mobile: top bar -->
-<div class="md:hidden flex justify-between items-center px-4 pt-4 text-[#272727] font-semibold relative z-[20002]">
-  <img src="/logo/272727_logo.png" alt="Logo" class="h-9 w-auto" />
-
-  <button class="focus:outline-none z-[20003]" id="menuToggle" aria-label="Toggle Menu">
-    <svg
-      id="burgerIcon"
-      class="w-7 h-7"
-      fill="none"
-      stroke="currentColor"
-      viewBox="0 0 24 24"
-    >
-      <path stroke-width="1.5" d="M4 6h20M4 12h20M4 18h20" />
-    </svg>
-  </button>
+  <!-- Menu items -->
+  <ul class="flex justify-center gap-20 menu-list">
+    {menuItems.map(item => (
+      <li>
+        <a
+          href={item.href}
+          class={`cursor-pointer ${
+            item.label === "EN/DA"
+              ? "menu-item-highlight"
+              : "hover:text-[#4A40FF]"
+          }`}
+        >
+          {item.label}
+        </a>
+      </li>
+    ))}
+  </ul>
 </div>
 
-<!-- Mobile dropdown -->
-<ul
-  id="mobileMenu"
-  class="md:hidden absolute left-0 top-full w-full
-         flex flex-col gap-3 text-[#272727]
-         bg-[url('/logo/alice_baggrund.png')] bg-cover bg-top bg-no-repeat
-         px-4 py-4 border-b-3 border-b-[#4A40FF]
-         font-suisse menu-list
-         z-[20003]"
-  style="display: none;"
->
-  {menuItems.map(item => (
-    <li class={`cursor-pointer hover:opacity-70 ${item === "EN/DA" ? "menu-item-highlight" : ""}`}>
-      {item}
-    </li>
-  ))}
-</ul>
+
+  <!-- Mobile: top bar -->
+  <div class="md:hidden flex justify-between items-center px-4 pt-4 text-[#272727] font-semibold relative z-[20002]">
+    <a href="/">
+  <img src="/logo/272727_logo.png" alt="Logo" class="h-9 w-auto" />
+</a>
+
+    <button class="focus:outline-none z-[20003]" id="menuToggle" aria-label="Toggle Menu">
+      <svg
+        id="burgerIcon"
+        class="w-7 h-7"
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+      >
+        <path stroke-width="1.5" d="M4 6h20M4 12h20M4 18h20" />
+      </svg>
+    </button>
+  </div>
+
+  <!-- Mobile dropdown -->
+  <ul
+    id="mobileMenu"
+    class="md:hidden absolute left-0 top-full w-full
+           flex flex-col gap-3 text-[#272727]
+           bg-[url('/logo/alice_baggrund.png')] bg-cover bg-top bg-no-repeat
+           px-4 py-4 border-b-3 border-b-[#4A40FF]
+           font-suisse menu-list
+           z-[20003]"
+    style="display: none;"
+  >
+    {menuItems.map(item => (
+      <li>
+        <a
+          href={item.href}
+          class={`cursor-pointer hover:opacity-70 ${
+            item.label === "EN/DA" ? "menu-item-highlight" : ""
+          }`}
+          onclick="document.getElementById('mobileMenu').style.display='none'"
+        >
+          {item.label}
+        </a>
+      </li>
+    ))}
+  </ul>
 
 </nav>
 
 <script is:inline>
- const btn = document.getElementById("menuToggle");
-const menu = document.getElementById("mobileMenu");
-const icon = document.getElementById("burgerIcon");
+  const btn = document.getElementById("menuToggle");
+  const menu = document.getElementById("mobileMenu");
+  const icon = document.getElementById("burgerIcon");
 
-btn.addEventListener("click", () => {
-  const isOpen = menu.style.display !== "none";
-  
-  // toggle menu
-  menu.style.display = isOpen ? "none" : "flex";
-  
-  // toggle icon
-  if (isOpen) {
-    // skift tilbage til burger
-    icon.innerHTML = '<path stroke-width="1.5" d="M4 6h20M4 12h20M4 18h20" />';
-  } else {
-    // skift til kryds
-    icon.innerHTML = '<path stroke-width="1.5" d="M6 6l12 12M6 18L18 6" />';
-  }
-});
-  
+  btn.addEventListener("click", () => {
+    const isOpen = menu.style.display !== "none";
+    
+    menu.style.display = isOpen ? "none" : "flex";
+    
+    if (isOpen) {
+      icon.innerHTML = '<path stroke-width="1.5" d="M4 6h20M4 12h20M4 18h20" />';
+    } else {
+      icon.innerHTML = '<path stroke-width="1.5" d="M6 6l12 12M6 18L18 6" />';
+    }
+  });
 </script>
