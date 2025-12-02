@@ -20,7 +20,7 @@ const allConcerts = [...novemberConcerts, ...decemberConcerts];
 ---
 
 <!-- H1 OVER FILTER MENU -->
-<div class="mt-0 md:mt-14.5 mb-10">
+<div class="mt-8 md:mt-14.5 mb-10">
   <h1 class="text-[#272727] text-[40px] md:text-[80px] font-suisse tracking-widest text-center">
     PROGRAM
   </h1>
@@ -94,7 +94,7 @@ const allConcerts = [...novemberConcerts, ...decemberConcerts];
     const concerts = allConcerts.filter(c => c.month === month);
     return (
       <div key={month} class={`concert-section ${month === "December" ? "mt-15 md:mt-20" : ""}`}>
-        <div class="grid grid-cols-6 md:grid-cols-10 gap-4 md:gap-0 auto-rows-auto stagger-grid px-15 md:px-0">
+        <div class="grid grid-cols-6 md:grid-cols-10 gap-4 md:gap-0 auto-rows-auto stagger-grid px-21.5 md:px-0">
           <h2 class="col-span-4 md:col-span-4 md:col-start-6 text-[#272727] text-[30px] md:text-[80px] font-suisse tracking-widest">
             {month}
           </h2>

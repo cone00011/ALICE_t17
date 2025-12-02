@@ -26,22 +26,31 @@ let colorClasses = highlight
   month og genre er ikke synlige, men findes som data-attributes for filtrering:
   <div data-month="November" data-genre="folk"> ...
 -->
-<div
-  class={`px-6 py-5 w-full font-suisse tracking-widest ${colorClasses} ${extraClass}`}
-  data-month={month}
-  data-genre={genre}
->
-  <!-- Dato -->
-  <div class="text-[30px] md:text-[60px] leading-none mb-2 font-suisse tracking-widest">
-    {date}
-  </div>
+<a href="/singleview" class="block w-full h-full">
+  <div
+    class={`px-6 py-5 w-full h-full font-suisse tracking-widest 
+      ${colorClasses} ${extraClass} 
+      border-0 
+      hover:border-[3px] md:hover:border-[5px]
+      transition-all duration-200
+      ${highlight ? 'hover:border-[#E8A9C4]' : 'hover:border-[#4A40FF]'}`}
+    data-month={month}
+    data-genre={genre}
+  >
+    <!-- Dato -->
+    <div class="text-[30px] md:text-[60px] leading-none mb-2 font-suisse tracking-widest">
+      {date}
+    </div>
 
-  <!-- Kunstnernavn + pil -->
-  <div class="relative text-[18px] md:text-[25px] leading-snug font-suisse tracking-widest pr-8">
-    {artist}
-    <!-- Pil -->
-    <span class="absolute bottom-0 right-0 text-[20px] md:text-[30px]">
-      →
-    </span>
+    <!-- Kunstnernavn + pil -->
+    <div class="relative text-[18px] md:text-[25px] leading-snug font-suisse tracking-widest pr-8">
+      {artist}
+      <!-- Pil -->
+      <span class="absolute bottom-0 right-0 text-[20px] md:text-[30px]">
+        →
+      </span>
+    </div>
   </div>
-</div>
+</a>
+
+
