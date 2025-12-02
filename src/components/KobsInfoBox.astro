@@ -1,0 +1,45 @@
+---
+interface Props {
+  eventTitle?: string;
+  buttonHref?: string;   // hvor "VIDERE" skal sende hen
+  buttonLabel?: string;  // tekst på knappen – fx "VIDERE →" eller "BETAL 350 kr. →"
+}
+
+const {
+  eventTitle = "Nadah El Shazly + Nova Varnrable",
+  buttonHref,
+  buttonLabel = "VIDERE →",
+} = Astro.props;
+---
+
+<section class="w-full border-[3px] border-[#3B2CFF] bg-transparent font-suisse">
+  <!-- Pink top -->
+  <header class="bg-[#E8A9C4] px-6 py-4 md:px-10 md:py-5">
+    <h2 class="text-[16px] md:text-[20px] tracking-[0.12em]">
+      {eventTitle}
+    </h2>
+  </header>
+
+  <!-- Indhold (felter + knap) -->
+  <div class="px-6 py-6 md:px-10 md:py-8 bg-white/0">
+    <!-- her kommer felterne fra siden -->
+    <div class="space-y-4 md:space-y-6">
+      <slot />
+    </div>
+
+    {buttonHref && (
+      <div class="mt-13 flex justify-center">
+        <a
+          href={buttonHref}
+          class="tracking-[0.18em] text-[16px] md:text-[20px] uppercase
+                 transition-all duration-200 ease-out
+                 hover:translate-x-[2px]
+                 hover:text-[#3B2CFF]
+                 cursor-pointer"
+        >
+          {buttonLabel}
+        </a>
+      </div>
+    )}
+  </div>
+</section>

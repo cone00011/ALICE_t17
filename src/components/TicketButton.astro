@@ -16,36 +16,46 @@ const {
 } = Astro.props;
 ---
 
-<div class="w-full border-2 border-[#3B2CFF] bg-white hover:opacity-80 transition-opacity cursor-pointer">
-  <div class="grid grid-cols-2 h-12 w-full">
-
-    <!-- VENSTRE DEL (KØB BILLET) -->
-    {
-      href ? (
-        <a
-          href={href}
-          class="bg-[#E8A9C4] flex items-center justify-center"
-        >
-          <span class="font-suisse tracking-[0.12em] text-[14px] md:text-[16px] uppercase">
-            {label}
-          </span>
-        </a>
-      ) : (
+{href ? (
+  /* HELE KNAPPEN ER ET LINK */
+  <a href={href} class="block w-full">
+    <div class="w-full border-2 border-[#3B2CFF] bg-white hover:opacity-80 transition-opacity cursor-pointer">
+      <div class="grid grid-cols-2 h-12 w-full">
+        <!-- VENSTRE DEL (KØB BILLET) -->
         <div class="bg-[#E8A9C4] flex items-center justify-center">
           <span class="font-suisse tracking-[0.12em] text-[14px] md:text-[16px] uppercase">
             {label}
           </span>
         </div>
-      )
-    }
 
-    <!-- HØJRE DEL (PRIS) -->
-    <div class="bg-black text-white flex items-center justify-center">
-      <span class="font-suisse tracking-[0.08em] text-[14px] md:text-[16px]">
-        {fromLabel} <strong class="text-[18px] font-normal">{priceLabel}</strong> {feeLabel}
-      </span>
+        <!-- HØJRE DEL (PRIS) -->
+        <div class="bg-black text-white flex items-center justify-center">
+          <span class="font-suisse tracking-[0.08em] text-[14px] md:text-[16px]">
+            {fromLabel} <strong class="text-[18px] font-normal">{priceLabel}</strong> {feeLabel}
+          </span>
+        </div>
+      </div>
     </div>
+  </a>
+) : (
+  /* STATISK VERSION UDEN LINK */
+  <div class="w-full border-2 border-[#3B2CFF] bg-white hover:opacity-80 transition-opacity cursor-pointer">
+    <div class="grid grid-cols-2 h-12 w-full">
+      <!-- VENSTRE DEL (KØB BILLET) -->
+      <div class="bg-[#E8A9C4] flex items-center justify-center">
+        <span class="font-suisse tracking-[0.12em] text-[14px] md:text-[16px] uppercase">
+          {label}
+        </span>
+      </div>
 
+      <!-- HØJRE DEL (PRIS) -->
+      <div class="bg-black text-white flex items-center justify-center">
+        <span class="font-suisse tracking-[0.08em] text-[14px] md:text-[16px]">
+          {fromLabel} <strong class="text-[18px] font-normal">{priceLabel}</strong> {feeLabel}
+        </span>
+      </div>
+    </div>
   </div>
-</div>
+)}
+
 

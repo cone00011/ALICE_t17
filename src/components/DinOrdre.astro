@@ -1,15 +1,9 @@
 ---
-interface OrderLine {
-  label: string;
-  price: string; // fx "175 Kr."
-}
-
 interface Props {
   eventTitle?: string;
   date?: string;
   time?: string;
   venue?: string;
-  lines?: OrderLine[];
 }
 
 const {
@@ -17,64 +11,145 @@ const {
   date = "20/11/25",
   time = "20:00",
   venue = "ALICE",
-  lines = [
-    { label: "1 Under 25 / studerende billetter", price: "175 Kr." },
-    { label: "1 Under 25 / studerende billetter", price: "175 Kr." },
-  ],
 } = Astro.props;
 ---
 
 <section class="w-full border-[3px] border-[#3B2CFF] font-suisse">
   <!-- Pink top -->
   <header class="bg-[#E8A9C4] px-6 py-4 md:px-10 md:py-5">
-    <h2 class="text-[20px] md:text-[25px] tracking-[0.12em]">
+    <h2 class="text-[18px] md:text-[22px] tracking-[0.12em]">
       {eventTitle}
     </h2>
   </header>
 
-  <!-- Inner content -->
+  <!-- Indhold -->
   <div class="px-6 py-6 md:px-10 md:py-8">
 
     <!-- dato / tid / venue -->
-    <div class="flex flex-wrap gap-x-10 gap-y-2 text-[16px] md:text-[20px] mb-6">
+    <div class="flex flex-wrap gap-x-10 gap-y-2 text-[14px] md:text-[16px] mb-6">
       <span>{date}</span>
       <span>{time}</span>
       <span>{venue}</span>
     </div>
 
-    <!-- linjer -->
-    <div class="pt-6 space-y-4 md:space-y-5 text-[16px] md:text-[20px]">
-      {lines.map((line) => (
-        <div class="flex items-center justify-between">
-          <span>{line.label}</span>
-
-          <div class="flex items-center gap-10">
-            <span>{line.price}</span>
-            <!-- lille minus som “fjern” -->
-            <button
-              type="button"
-              class="font-suisse text-[16px] leading-none md:text-[20px] cursor-pointer
-                     transition-colors duration-150 hover:text-[#3B2CFF]"
-            >
-              –
-            </button>
-          </div>
-        </div>
-      ))}
-    </div>
-
-    <!-- CTA nederst i boksen -->
-    <div class="mt-20 flex justify-center">
-      <a href="/betaling"
-        class="inline-flex items-center gap-2
-               tracking-[0.18em] text-[16px] md:text-[20px] uppercase
-               transition-all duration-200 ease-out
-               hover:translate-x-[2px]
-               hover:border-[#3B2CFF] hover:text-[#3B2CFF]
-               cursor-pointer"
-      >
-        KØB BILLETTER →
-      </a>
+    <!-- linjer, bliver udfyldt med JS -->
+    <div
+      id="js-order-lines"
+      class="pt-6 space-y-4 md:space-y-5 text-[14px] md:text-[16px]"
+    >
+      <div class="text-[14px] md:text-[16px] opacity-60">
+        Ingen billetter valgt endnu.
+      </div>
     </div>
   </div>
 </section>
+
+<script is:inline>
+  document.addEventListener("DOMContentLoaded", () => {
+    const container = document.getElementById("js-order-lines");
+    if (!container) return;
+
+    const STD_PRICE = 195;
+    const YOUTH_PRICE = 175;
+
+    function loadOrder() {
+      try {
+        const raw = localStorage.getItem("alice-order");
+        if (!raw) return { std: 0, youth: 0 };
+        const data = JSON.parse(raw);
+        return {
+          std: data.std || 0,
+          youth: data.youth || 0,
+        };
+      } catch (err) {
+        console.error("Kunne ikke læse ordre", err);
+        return { std: 0, youth: 0 };
+      }
+    }
+
+    function saveOrder(order) {
+      const totalTickets = order.std + order.youth;
+      const totalPrice = order.std * STD_PRICE + order.youth * YOUTH_PRICE;
+
+      localStorage.setItem(
+        "alice-order",
+        JSON.stringify({
+          std: order.std,
+          youth: order.youth,
+          totalTickets,
+          totalPrice,
+        })
+      );
+    }
+
+    function render() {
+      const data = loadOrder();
+      container.innerHTML = "";
+
+      const lines = [];
+
+      if (data.std > 0) {
+        lines.push({
+          type: "standard",
+          count: data.std,
+          label: `${data.std} Standard billetter`,
+          price: data.std * STD_PRICE,
+        });
+      }
+
+      if (data.youth > 0) {
+        lines.push({
+          type: "youth",
+          count: data.youth,
+          label: `${data.youth} Under 25 / studerende billetter`,
+          price: data.youth * YOUTH_PRICE,
+        });
+      }
+
+      if (!lines.length) {
+        container.innerHTML =
+          '<div class="text-[14px] md:text-[16px] opacity-60">Ingen billetter valgt endnu.</div>';
+        return;
+      }
+
+      lines.forEach((line) => {
+        const row = document.createElement("div");
+        row.className = "flex items-center justify-between";
+
+        row.innerHTML = `
+          <span>${line.label}</span>
+          <div class="flex items-center gap-10">
+            <span>${line.price} Kr.</span>
+            <button
+              type="button"
+              data-type="${line.type}"
+              class="js-remove-line font-suisse text-[18px] leading-none cursor-pointer
+                     transition-colors duration-150 hover:text-[#3B2CFF]">
+              –
+            </button>
+          </div>
+        `;
+
+        container.appendChild(row);
+      });
+
+      // klik-handlers til minus-knapperne
+      container.querySelectorAll(".js-remove-line").forEach((btn) => {
+        btn.addEventListener("click", () => {
+          const type = btn.getAttribute("data-type");
+          const current = loadOrder();
+
+          if (type === "standard" && current.std > 0) current.std--;
+          if (type === "youth" && current.youth > 0) current.youth--;
+
+          saveOrder(current);
+          render(); // re-render efter ændring
+        });
+      });
+    }
+
+    render();
+  });
+</script>
+
+

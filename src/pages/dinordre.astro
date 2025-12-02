@@ -22,7 +22,7 @@ import DinOrdre from "../components/DinOrdre.astro";
           <button
             class="px-6 py-2 md:px-10 md:py-3
                    border-2 border-[#3B2CFF] bg-[#E8A9C4]
-                   font-suisse text-[12px] md:text-[14px] tracking-[0.16em] uppercase
+                   font-suisse text-[12px] md:text-[14px] md:border-3 tracking-[0.16em] uppercase
                    h-auto">
             1. Billetter
           </button>
@@ -31,7 +31,7 @@ import DinOrdre from "../components/DinOrdre.astro";
           <button
             class="px-6 py-2 md:px-10 md:py-3
                    border-2 border-[#3B2CFF] bg-white
-                   font-suisse text-[12px] md:text-[14px] tracking-[0.16em] uppercase
+                   font-suisse text-[12px] md:text-[14px] md:border-3 tracking-[0.16em] uppercase
                    h-auto">
             2. Kunde
           </button>
@@ -40,7 +40,7 @@ import DinOrdre from "../components/DinOrdre.astro";
           <button
             class="px-6 py-2 md:px-10 md:py-3
                    border-2 border-[#3B2CFF] bg-white
-                   font-suisse text-[12px] md:text-[14px] tracking-[0.16em] uppercase
+                   font-suisse text-[12px] md:text-[14px] md:border-3 tracking-[0.16em] uppercase
                    h-auto">
             3. Kvittering
           </button>
@@ -54,8 +54,21 @@ import DinOrdre from "../components/DinOrdre.astro";
         </div>
 
         <!-- Selve ordre-boksen -->
-        <div class="grid-item col-start-1 col-span-6 row-start-4 row-span-4 md:col-start-2 md:col-span-8 md:row-start-4 md:row-span-3 flex">
+        <div class="grid-item col-start-1 col-span-6 row-start-4 row-span-4 md:col-start-3 md:col-span- md:row-start-4 md:row-span-3 flex">
           <DinOrdre />
+        </div>
+
+        <div class="grid-item mt-8 col-start-3 col-span-2 row-start-7 row-span-1 
+            md:col-start-3 md:col-span-6 md:row-start-6 md:mt-15 flex justify-center">
+          <a
+          href="/betaling"
+          class="tracking-[0.18em] text-[12px] md:text-[14px] uppercase
+           transition-all duration-200 ease-out
+           hover:translate-x-[2px]
+           hover:text-[#3B2CFF]"
+         >
+         KØB BILLETTER →
+          </a>
         </div>
 
       </div>
@@ -66,7 +79,7 @@ import DinOrdre from "../components/DinOrdre.astro";
     .hero-grid {
       display: grid;
       grid-template-columns: repeat(10, 1fr);
-      grid-template-rows: repeat(40, 10vw);
+      grid-template-rows: repeat(6, 10vw);
       width: 100%;
       height: 100%;
       position: relative;
@@ -81,7 +94,7 @@ import DinOrdre from "../components/DinOrdre.astro";
     @media (max-width: 768px) {
       .hero-grid {
         grid-template-columns: repeat(6, 1fr);
-        grid-template-rows: repeat(40, 16vw);
+        grid-template-rows: repeat(8, 16vw);
       }
     }
   </style>
