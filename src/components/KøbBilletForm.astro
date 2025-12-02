@@ -1,0 +1,199 @@
+---
+interface Props {
+  eventTitle?: string;
+  date?: string;
+  time?: string;
+  venue?: string;
+}
+
+const {
+  eventTitle = "Nadah El Shazly + Nova Varnrable",
+  date = "20/11/25",
+  time = "20:00",
+  venue = "ALICE",
+} = Astro.props;
+---
+
+<section
+  class="w-full h-full border-3 border-[#3B2CFF] js-ticket-form"
+  data-standard-price="195"
+  data-youth-price="175"
+>
+
+  <!-- Top-bjælke -->
+  <header class="bg-[#E8A9C4] px-4 py-3 md:px-8 md:py-5">
+    <h2 class="font-suisse text-[18px] md:text-[22px] tracking-[0.12em]">
+      {eventTitle}
+    </h2>
+
+    <div class="mt-2 flex flex-wrap gap-x-6 gap-y-1 font-suisse text-[12px] md:text-[14px]">
+      <span>{date}</span>
+      <span>{time}</span>
+      <span>{venue}</span>
+      <span><span class="js-total-tickets">0</span> billetter</span>
+      <span><span class="js-total-price">0</span> kr.</span>
+    </div>
+  </header>
+
+
+  <!-- Midten -->
+  <div class="px-6 py-8 md:px-20 md:py-12">
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-4">
+
+      <!-- STANDARD -->
+      <div class="flex flex-col w-full max-w-[320px] mx-auto border-[3px] border-[#E8A9C4]">
+
+        <!-- ØVERSTE BAR -->
+        <div class="bg-[#E8A9C4] flex items-center justify-center px-8 py-4 md:py-5">
+          <h3 class="font-suisse text-[14px] md:text-[18px] tracking-[0.18em] uppercase">
+            Standard
+          </h3>
+        </div>
+
+        <!-- NEDERSTE (FLEX-1 FIX) -->
+        <div class="bg-[#F2F2F2] flex flex-1 flex-col items-center justify-between px-10 py-8 md:py-10">
+
+          <div class="flex items-center gap-4 mb-6 md:mb-8">
+            <button
+              type="button"
+              class="w-8 h-8 md:w-9 md:h-9 border border-black flex items-center justify-center font-suisse text-lg js-qty-btn"
+              data-type="standard"
+              data-action="dec"
+            >–</button>
+
+            <span
+              class="font-suisse text-[40px] md:text-[56px] leading-none js-qty"
+              data-type="standard"
+            >0</span>
+
+            <button
+              type="button"
+              class="w-8 h-8 md:w-9 md:h-9 border border-black flex items-center justify-center font-suisse text-lg js-qty-btn"
+              data-type="standard"
+              data-action="inc"
+            >+</button>
+          </div>
+
+          <p class="font-suisse text-[14px] md:text-[16px] tracking-[0.08em]">
+            Pris 195 kr.
+          </p>
+
+        </div>
+      </div>
+
+
+      <!-- UNDER 25 / STUDERENDE -->
+      <div class="flex flex-col w-full max-w-[320px] mx-auto border-[3px] border-[#E8A9C4]">
+
+        <!-- ØVERSTE BAR -->
+        <div class="bg-[#E8A9C4] flex items-center justify-center px-8 py-4 md:py-5">
+          <h3 class="font-suisse text-[14px] md:text-[18px] tracking-[0.18em] uppercase text-center">
+            Under 25 / Studerende
+          </h3>
+        </div>
+
+        <!-- NEDERSTE (FLEX-1 FIX) -->
+        <div class="bg-[#F2F2F2] flex flex-1 flex-col items-center justify-between px-10 py-8 md:py-10">
+
+          <div class="flex items-center gap-4 mb-6 md:mb-8">
+            <button
+              type="button"
+              class="w-8 h-8 md:w-9 md:h-9 border border-black flex items-center justify-center font-suisse text-lg js-qty-btn"
+              data-type="youth"
+              data-action="dec"
+            >–</button>
+
+            <span
+              class="font-suisse text-[40px] md:text-[56px] leading-none js-qty"
+              data-type="youth"
+            >0</span>
+
+            <button
+              type="button"
+              class="w-8 h-8 md:w-9 md:h-9 border border-black flex items-center justify-center font-suisse text-lg js-qty-btn"
+              data-type="youth"
+              data-action="inc"
+            >+</button>
+          </div>
+
+          <p class="font-suisse text-[14px] md:text-[16px] tracking-[0.08em]">
+            Pris 175 kr.
+          </p>
+
+        </div>
+      </div>
+
+    </div>
+
+
+  <!-- TILFØJ BILLETTER-KNAP -->
+    <div class="mt-13 flex justify-center">
+     <a
+  href="/src/pages/dinordre"
+  class="inline-flex items-center gap-2
+         font-suisse tracking-[0.18em] text-[12px] md:text-[14px] uppercase
+         transition-all duration-200 ease-out
+         hover:translate-x-[2px]
+         hover:border-[#3B2CFF] hover:text-[#3B2CFF]
+         cursor-pointer"
+>
+  TILFØJ BILLETTER →
+</a>
+    </div>
+
+  </div>
+</section>
+
+
+<script is:inline>
+  document.addEventListener("DOMContentLoaded", () => {
+    const form = document.querySelector(".js-ticket-form");
+    if (!form) return;
+
+    const stdPrice = 195;
+    const youthPrice = 175;
+
+    const totalTicketsEl = form.querySelector(".js-total-tickets");
+    const totalPriceEl = form.querySelector(".js-total-price");
+
+    function getQty(type) {
+      const selector = '.js-qty[data-type="' + type + '"]';
+      const el = form.querySelector(selector);
+      return el ? Number(el.textContent) : 0;
+    }
+
+    function setQty(type, value) {
+      const selector = '.js-qty[data-type="' + type + '"]';
+      const el = form.querySelector(selector);
+      if (el) el.textContent = Math.max(0, value);
+    }
+
+    function updateTotals() {
+      const std = getQty("standard");
+      const youth = getQty("youth");
+
+      totalTicketsEl.textContent = std + youth;
+      totalPriceEl.textContent = std * stdPrice + youth * youthPrice;
+    }
+
+    form.addEventListener("click", (event) => {
+      const btn = event.target.closest(".js-qty-btn");
+      if (!btn) return;
+
+      const type = btn.dataset.type;
+      const action = btn.dataset.action;
+
+      const current = getQty(type);
+      const next = action === "inc" ? current + 1 : current - 1;
+
+      setQty(type, next);
+      updateTotals();
+    });
+
+    updateTotals();
+  });
+</script>
+
+
+

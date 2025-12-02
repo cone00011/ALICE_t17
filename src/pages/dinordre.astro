@@ -1,0 +1,88 @@
+---
+import MainLayout from "../layouts/MainLayout.astro";
+import DinOrdre from "../components/DinOrdre.astro";
+---
+
+<MainLayout title="Din ordre">
+  <article>
+    <div class="relative w-full">
+      <!-- samme grid som singleview/billetform -->
+      <div class="hero-grid w-full h-full absolute inset-0 overflow-hidden">
+
+        <!-- Top: “Vælg antal & type billetter” -->
+        <div class="grid-item col-start-1 col-span-6 row-start-1 row-span-1 md:col-start-3 md:col-span-6 md:row-start-1 md:row-span-2 md:mb-10 flex items-center justify-center pointer-events-none">
+          <h2 class="font-suisse text-[20px] md:text-[32px] tracking-[0.25em]">
+            Vælg antal &amp; type billetter
+          </h2>
+        </div>
+
+        <!-- Stepper -->
+        <div class="grid-item col-start-1 col-span-8 row-start-2 row-span-1 md:col-start-3 md:col-span-6 md:row-start-2 md:mt-15 md:row-span-1 flex gap-4 justify-center items-start">
+          <!-- 1. Billetter (aktiv) -->
+          <button
+            class="px-6 py-2 md:px-10 md:py-3
+                   border-2 border-[#3B2CFF] bg-[#E8A9C4]
+                   font-suisse text-[12px] md:text-[14px] tracking-[0.16em] uppercase
+                   h-auto">
+            1. Billetter
+          </button>
+
+          <!-- 2. Kunde -->
+          <button
+            class="px-6 py-2 md:px-10 md:py-3
+                   border-2 border-[#3B2CFF] bg-white
+                   font-suisse text-[12px] md:text-[14px] tracking-[0.16em] uppercase
+                   h-auto">
+            2. Kunde
+          </button>
+
+          <!-- 3. Kvittering -->
+          <button
+            class="px-6 py-2 md:px-10 md:py-3
+                   border-2 border-[#3B2CFF] bg-white
+                   font-suisse text-[12px] md:text-[14px] tracking-[0.16em] uppercase
+                   h-auto">
+            3. Kvittering
+          </button>
+        </div>
+
+        <!-- “Din ordre” overskrift -->
+        <div class="grid-item col-start-3 col-span-2 row-start-3 row-span-1 md:col-start-4 md:col-span-4 md:row-start-3 md:row-span-1 flex items-center justify-center pointer-events-none">
+          <h1 class="font-suisse text-[22px] md:text-[32px] tracking-[0.18em]">
+            Din ordre
+          </h1>
+        </div>
+
+        <!-- Selve ordre-boksen -->
+        <div class="grid-item col-start-1 col-span-6 row-start-4 row-span-4 md:col-start-2 md:col-span-8 md:row-start-4 md:row-span-3 flex">
+          <DinOrdre />
+        </div>
+
+      </div>
+    </div>
+  </article>
+
+  <style>
+    .hero-grid {
+      display: grid;
+      grid-template-columns: repeat(10, 1fr);
+      grid-template-rows: repeat(40, 10vw);
+      width: 100%;
+      height: 100%;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .grid-item {
+      position: relative;
+      overflow: hidden;
+    }
+
+    @media (max-width: 768px) {
+      .hero-grid {
+        grid-template-columns: repeat(6, 1fr);
+        grid-template-rows: repeat(40, 16vw);
+      }
+    }
+  </style>
+</MainLayout>
