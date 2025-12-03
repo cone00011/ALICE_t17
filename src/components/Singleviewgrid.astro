@@ -1,63 +1,46 @@
 ---
 import Button from "./Button.astro";
 import TicketButton from "../components/TicketButton.astro";
-
+import FloatingTicketBar from "../components/FloatingTicketBar.astro";
 ---
 
 <article>
 <div class="relative w-full">
   <!-- Grid container -->
-  <div class="hero-grid w-full h-full absolute inset-0  overflow-hidden">
+  <div class="hero-grid w-full h-full">
 
     <div class="grid-item col-start-2 col-span-5 row-start-2 row-span-3 md:col-start-6 md:col-span-4 md:row-start-2 md:row-span-4 flex ml-3 pointer-events-none">
       <h1 class="text-5xl md:text-[110px] font-suisse">Nadah El Shazly  + 
        Nova Varnrable</h1>
     </div> 
 
-    <div class="grid-item col-start-2 col-span-5 row-start-3 row-span-1 mt-10 md:col-start-6 md:col-span-3 md:row-start-5 md:row-span-4 ml-3 flex  pointer-events-none">
-      <p class="text-[16px] md:text-[20px] font-suisse">Arabiske traditioner møder popproduktioner</p>
-    </div> 
-
-       <!-- Logo under ved billede -->
-    <div class="grid-item col-start-1 ml-10 mt-8 z-10 col-span-2 row-start-4 row-span-2 md:col-start-1 md:col-span-2 md:row-start-1 md:row-span-2 flex ">
-      <img src="/logo/272727_logo.png" alt="Logo" class="object-cover w-30 h-30" />
-    </div>
-
-    <!-- nadah_billede -->
-    <div class="grid-item col-start-2 col-span-4 row-start-5 row-span-4 md:col-start-2 md:col-span-4 md:row-start-2 md:row-span-4 flex ">
-      <img src="/img/nadah.webp" alt="nadah" class="object-cover w-full h-full" />
-    </div>
-
-     <div class="grid-item col-start-2 col-span-4 row-start-9 row-span-4 mt-8 leading-relaxed md:col-start-2 md:col-span-3 md:row-start-6 md:row-span-2 flex pointer-events-none">
-      <p class="text-[16px] md:text-[20px] font-suisse">Torsdag 20.11.25<br>Dørene åbner kl: 19:00<br>Koncerten starter kl: 20:00<br>Stående</p>
-    </div> 
-
-     <div class="grid-item hidden col-start-1 col-span-1 row-start-7 row-span-1 md:col-start-9 md:col-span-1 md:row-start-8 md:row-span-1 md:flex ">
-      <img src="/blok/lilleblok.png" alt="Logo" />
-    </div>
-   
-    <!-- nora_billede -->
-    <div class="grid-item col-start-3 col-span-4 row-start-12 row-span-4 md:col-start-6 md:col-span-4 md:row-start-9 md:row-span-4 flex ">
-      <img src="/img/nora.webp" alt="nora" class="object-cover w-full h-full" />
-    </div>
-
-    <div class="grid-item col-start-2 col-span-4 row-start-17 row-span-5 leading-relaxed md:col-start-2 md:col-span-4 md:row-start-9 md:row-span-2 flex mt-15 pointer-events-none">
+    <div class="grid-item col-start-2 col-span-4 row-start-8 row-span-2 md:col-start-6 md:col-span-4 md:row-start-5 md:row-span-4 ml-3 flex  pointer-events-none">
       <p class="text-[16px] md:text-[20px] font-suisse">Velkommen på klubben, hvor hjerterne bløder, og hvor hjerterne brænder. Se frem til en koncertaften i den eksperimenterende, elektroniske musiks tegn, når Nova Varnrable og Nadah El Shazly fylder koncertsalen med et spektrum af lyde på tværs af genrer, traditioner og udtryk.</p>
     </div> 
 
-     <div class="grid-item hidden col-start-1 col-span-1 row-start-7 row-span-1 md:col-start-5 md:col-span-1 md:row-start-11 md:row-span-1 md:flex ">
+       <!-- Logo under ved billede -->
+    <div class="grid-item col-start-5 col-span-2 row-start-3 row-span-2 md:col-start-1 md:col-span-2 md:row-start-1 md:row-span-2 flex justify-center items-center z-10">
+      <img src="/logo/272727_logo.png" alt="Logo" class="w-3/4 h-auto md:w-3/4 md:h-auto object-contain" />
+    </div>
+
+    <!-- nadah_billede -->
+    <div class="grid-item col-start-2 col-span-4 row-start-4 row-span-4 md:col-start-2 md:col-span-4 md:row-start-2 md:row-span-4 flex ">
+      <img src="/img/nadah.webp" alt="nadah" class="object-cover w-full h-full" />
+    </div>
+
+     <div class="grid-item ml-3 col-start-2 col-span-4 row-start-10 row-span-4 leading-relaxed md:col-start-2 md:col-span-3 md:row-start-6 md:row-span-2 flex pointer-events-none">
+      <p class="text-[16px] md:text-[20px] font-suisse">Torsdag 20.11.25<br>Dørene åbner kl: 19:00<br>Koncerten starter kl: 20:00<br>Stående</p>
+    </div> 
+
+     <div class="grid-item hidden col-start-1 col-span-1 row-start-7 row-span-1 md:col-start-10 md:col-span-1 md:row-start-8 md:row-span-1 md:flex ">
       <img src="/blok/lilleblok.png" alt="Logo" />
     </div>
 
-     <div class="grid-item hidden col-start-5 col-span-2 row-start-4 row-span-1 md:col-start-4 md:col-span-2 md:row-start-12 md:row-span-1 md:flex ">
+     <div class="grid-item col-start-1 col-span-2 row-start-22 row-span-1 md:col-start-5 md:col-span-2 md:row-start-10 md:row-span-1 flex ">
       <img src="/blok/langblok.png" alt="Logo" />
     </div>
 
-     <div class="grid-item col-start-5 col-span-2 row-start-21 row-span-1 md:col-start-8 md:col-span-2 md:row-start-13 md:row-span-1 flex ">
-      <img src="/blok/langblok.png" alt="Logo" />
-    </div>
-
-    <div class="grid-item col-start-5 col-span-2 row-start-4 row-span-1 md:col-start-5 md:col-span-2 md:row-start-1 md:row-span-1 flex ">
+    <div class="grid-item col-start-5 col-span-2 row-start-1 row-span-1 md:col-start-5 md:col-span-2 md:row-start-1 md:row-span-1 flex ">
       <img src="/blok/langblok.png" alt="Logo" />
     </div>
 
@@ -65,11 +48,11 @@ import TicketButton from "../components/TicketButton.astro";
       <img src="/blok/langblok_stroke_oprejst.png" alt="Logo" />
     </div>
 
-     <div class="grid-item col-start-1 col-span-1 row-start-7 row-span-1 md:col-start-1 md:col-span-1 md:row-start-5 md:row-span-1 flex ">
+     <div class="grid-item col-start-1 col-span-1 row-start-3 row-span-1 md:col-start-1 md:col-span-1 md:row-start-5 md:row-span-1 flex ">
       <img src="/blok/lilleblok_stroke.png" alt="Logo" />
     </div>
 
-  <div class="grid-item col-start-2 col-span-3 row-start-21 row-span-3 md:col-start-7 md:col-span-3 md:row-start-15 md:row-span-3 relative">
+  <div class="grid-item col-start-2 col-span-3 row-start-12 row-span-3 md:col-start-7 md:col-span-3 md:row-start-8 md:row-span-3 relative">
 
      <!-- BILLEDET -->
      <img src="/img/nadah.webp" alt="nadah" class="object-cover w-full h-full block" />
@@ -88,11 +71,11 @@ import TicketButton from "../components/TicketButton.astro";
   
   </div>
 
-  <div class="grid-item col-start-3 col-span-4 row-start-25 row-span-1 md:col-start-2 md:col-span-4 md:row-start-14 md:row-span-2 flex pointer-events-none">
+  <div class="grid-item col-start-2 col-span-3 row-start-15 row-span-1 ml-3 md:col-start-2 md:col-span-3 md:row-start-7 md:row-span-1 md:ml-3 flex pointer-events-none items-center">
       <h3 class="text-3xl md:text-[60px] font-suisse">Nadah el shazly</h3>
     </div> 
 
-    <div class="grid-item col-start-2 col-span-5 row-start-26 row-span-4 md:col-start-2 md:col-span-4 md:row-start-15 md:row-span-4 flex flex-col gap-4">
+    <div class="grid-item col-start-2 col-span-4 row-start-16 row-span-4 ml-3 md:col-start-2 md:col-span-4 md:row-start-8 md:row-span-4 flex flex-col gap-4">
 
    <p class="text-[16px] md:text-[20px] font-suisse leading-relaxed">
     Den egyptiske sangerinde og komponist Nadah El Shazly<br>
@@ -109,15 +92,7 @@ import TicketButton from "../components/TicketButton.astro";
 
   </div>
 
-   <div class="grid-item col-start-1 col-span-2 row-start-30 row-span-1 md:col-start-4 md:col-span-2 md:row-start-18 md:row-span-1 flex ">
-      <img src="/blok/langblok.png" alt="Logo" />
-    </div>
-
-    <div class="grid-item col-start-6 col-span-1 row-start-30 row-span-1 md:col-start-7 md:col-span-1 md:row-start-6 md:row-span-1 flex md:hidden ">
-      <img src="/blok/lilleblok.png" alt="Logo" />
-    </div>
-
-  <div class="grid-item col-start-3 col-span-3 row-start-31 row-span-3 md:col-start-2 md:col-span-3 md:row-start-19 md:row-span-3 relative">
+  <div class="grid-item col-start-3 col-span-3 row-start-20 row-span-3 md:col-start-2 md:col-span-3 md:row-start-13 md:row-span-3 relative">
 
      <!-- BILLEDET -->
      <img src="/img/nora.webp" alt="nora" class="object-cover w-full h-full block" />
@@ -125,7 +100,7 @@ import TicketButton from "../components/TicketButton.astro";
      <!-- PLAY-KNAP (overlay) -->
     <button 
     type="button"
-    data-audio-id="nadah-audio"
+    data-audio-id="nora-audio"
     class="absolute inset-0 flex items-center justify-center 
            bg-black/20 hover:bg-black/30 
            text-white text-3xl rounded-full m-auto h-16 w-16">
@@ -136,15 +111,11 @@ import TicketButton from "../components/TicketButton.astro";
   
   </div>
 
-    <div class="grid-item col-start-6 col-span-2 row-start-32 row-span-2 md:col-start-10 md:col-span-2 md:row-start-17 md:row-span-2 flex ">
-      <img src="/blok/langblok_stroke_oprejst.png" alt="Logo" />
-    </div>
-
-      <div class="grid-item col-start-3 col-span-4 row-start-35 row-span-1 md:col-start-6 md:col-span-4 md:row-start-19 md:row-span-2 flex pointer-events-none">
+      <div class="grid-item col-start-2 col-span-4 row-start-23 row-span-1 ml-3 md:col-start-6 md:col-span-4 md:row-start-11 md:row-span-3 flex items-center pointer-events-none">
       <h3 class="text-3xl md:text-[60px] font-suisse">Nova Varnrable</h3>
     </div> 
 
-    <div class="grid-item col-start-2 col-span-5 row-start-36 row-span-4 md:col-start-6 md:col-span-4 md:row-start-20 md:row-span-4 flex flex-col gap-4">
+    <div class="grid-item col-start-2 col-span-4 row-start-24 row-span-4 ml-3 md:col-start-6 md:col-span-4 md:row-start-13 md:row-span-4 flex flex-col gap-4">
 
    <p class="text-[16px] md:text-[20px] font-suisse leading-relaxed">
     Med glitches former Nova Varnrable gribende fortællinger. Den etiopisk-norske kunstner og musikproducer<br>med base i København, er internationalt kendt for sin eksperimenterende elektroniske musik. Hendes sange bevæger sig gennem et spektrum af lyde, der bryder genrer, bygger scenarier op, samt udforsker kompositionens muligheder.  
@@ -157,63 +128,54 @@ import TicketButton from "../components/TicketButton.astro";
 
   </div>
    
-    <div class="grid-item col-start-5 col-span-2 row-start-9 row-span-1 md:col-start-7 md:col-span-2 md:row-start-7 md:row-span-1 flex ">
+    <div class="grid-item col-start-5 col-span-2 row-start-11 row-span-1 md:col-start-7 md:col-span-2 md:row-start-7 md:row-span-1 flex md:hidden ">
       <img src="/blok/langblok.png" alt="Logo" />
     </div>
 
-     <div class="grid-item col-start-6 col-span-1 row-start-10 row-span-1 md:col-start-7 md:col-span-1 md:row-start-6 md:row-span-1 flex ">
+     <div class="grid-item col-start-6 col-span-1 row-start-10 row-span-1 md:col-start-7 md:col-span-1 md:row-start-6 md:row-span-1 flex md:hidden ">
       <img src="/blok/lilleblok.png" alt="Logo" />
     </div>
 
-    <div class="grid-item col-start-1 col-span-2 row-start-12 row-span-2 md:col-start-1 md:col-span-2 md:row-start-13 md:row-span-2 flex ">
+    <div class="grid-item col-start-1 col-span-2 row-start-8 row-span-2 md:col-start-1 md:col-span-2 md:row-start-13 md:row-span-2 flex ">
       <img src="/blok/langblok_stroke_oprejst.png" alt="Logo" />
     </div>
    
-     <div class="grid-item col-start-4 col-span-1 row-start-20 row-span-1 md:col-start-5 md:col-span-1 md:row-start-8 md:row-span-1 flex ">
+     <div class="grid-item col-start-6 col-span-1 row-start-19 row-span-1 md:col-start-9 md:col-span-1 md:row-start-7 md:row-span-1 flex ">
       <img src="/blok/lilleblok_stroke.png" alt="Logo" />
     </div>
 
-    <div class="grid-item col-start-1 col-span-1 row-start-24 row-span-1 md:col-start-1 md:col-span-1 md:row-start-20 md:row-span-1 flex ">
-      <img src="/blok/lilleblok_stroke.png" alt="Logo" />
-    </div>
-
-<!-- KØB BILLET – fast bar nederst -->
-<div class="fixed bottom-0 left-0 right-0 mb-10 z-50">
-  <TicketButton
-    href="/billetform" 
-    label="KØB BILLET"
-    fromLabel="Fra"
-    priceLabel="160 dkk"
-    feeLabel="+ GEBYR"
-  />
-</div>
-
-
 </div> 
 </div> 
+<FloatingTicketBar
+  href="/billetform"
+  label="KØB BILLET"
+  fromLabel="Fra"
+  priceLabel="160 dkk"
+  feeLabel="+ GEBYR"
+/>
 </article>
 
 <style>
 .hero-grid {
   display: grid;
   grid-template-columns: repeat(10, 1fr);
-  grid-template-rows: repeat(40, 10vw);
+  grid-template-rows: repeat(15, 10vw);
   width: 100%;
   height: 100%;
-  
   position: relative;
-  overflow: hidden; /* Alt udenfor grid-celler bliver klippet */
+  /* fjern overflow: hidden her */
 }
 
 .grid-item {
   position: relative;
-  overflow: hidden; /* Alt udenfor kolonner/rækker klippes */
+  overflow: hidden; /* du kan godt beholde det her */
 }
+
 
 @media (max-width: 768px) {
   .hero-grid {
     grid-template-columns: repeat(6, 1fr);
-    grid-template-rows: repeat(40, 16vw);
+    grid-template-rows: repeat(25, 16vw);
   }
 }
 </style>

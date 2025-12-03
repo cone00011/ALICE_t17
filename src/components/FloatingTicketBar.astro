@@ -1,0 +1,69 @@
+---
+import TicketButton from "../components/TicketButton.astro";
+
+interface Props {
+  href?: string;
+  label?: string;
+  fromLabel?: string;
+  priceLabel?: string;
+  feeLabel?: string;
+}
+
+const {
+  href = "/billetform",
+  label = "KØB BILLET",
+  fromLabel = "Fra",
+  priceLabel = "160 dkk",
+  feeLabel = "+ GEBYR",
+} = Astro.props;
+---
+
+<!--
+  Wrapper der sørger for:
+  - fixed i bunden (fuld bredde)
+  - skifter til absolute lige over footeren
+-->
+<div
+  x-data=""
+  x-init="
+    const bar = $el;
+    const footer = document.querySelector('footer');
+    if (!footer) return;
+
+    const updatePosition = () => {
+      const barHeight = bar.offsetHeight;
+      const barBottom = window.scrollY + window.innerHeight;
+      const footerTop = footer.offsetTop;
+
+      // Hvis bar'ens bund ville ramme footer → lås den
+      if (barBottom >= footerTop) {
+        bar.style.position = 'absolute';
+        bar.style.left = '0';
+        bar.style.right = '0';
+        bar.style.bottom = '';
+        bar.style.top = (footerTop - barHeight) + 'px';
+      } else {
+        // Ellers er den fixed i bunden
+        bar.style.position = 'fixed';
+        bar.style.left = '0';
+        bar.style.right = '0';
+        bar.style.bottom = '0';
+        bar.style.top = '';
+      }
+    };
+
+    updatePosition();
+    window.addEventListener('scroll', updatePosition);
+    window.addEventListener('resize', updatePosition);
+  "
+  class="z-50 w-full"
+>
+  <TicketButton
+    href={href}
+    label={label}
+    fromLabel={fromLabel}
+    priceLabel={priceLabel}
+    feeLabel={feeLabel}
+  />
+</div>
+
