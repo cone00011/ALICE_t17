@@ -2,6 +2,7 @@
 interface Props {
   date: string;
   artist: string;
+  origin: string; // fx "etnicitet"
   extraClass?: string;
   highlight?: boolean;
   month?: string;   // fx "November"
@@ -11,6 +12,7 @@ interface Props {
 const {
   date,
   artist,
+  origin,
   extraClass = "",
   highlight = false,
   month = "",
@@ -28,15 +30,26 @@ let colorClasses = highlight
 -->
 <a href="/singleview" class="block w-full h-full">
   <div
-    class={`px-6 py-5 w-full h-full font-suisse tracking-widest 
-      ${colorClasses} ${extraClass} 
-      border-0 
-      hover:border-[3px] md:hover:border-[5px]
-      transition-all duration-200
-      ${highlight ? 'hover:border-[#E8A9C4]' : 'hover:border-[#4A40FF]'}`}
-    data-month={month}
-    data-genre={genre}
-  >
+  class={`relative px-6 py-5 w-full h-full font-suisse tracking-widest 
+    ${colorClasses} ${extraClass} 
+    border-0 
+    hover:border-[3px] md:hover:border-[5px]
+    transition-all duration-200
+    ${highlight ? 'hover:border-[#E8A9C4]' : 'hover:border-[#4A40FF]'}`}
+  data-month={month}
+  data-genre={genre}
+>
+
+{origin && (
+  <div class="absolute top-2 right-2 md:top-4 md:right-4 
+              text-[16px] md:text-[20px] font-suisse tracking-widest
+               text-[#272727] px-2 py-1 ">
+    {origin}
+  </div>
+)}
+
+
+
     <!-- Dato -->
     <div class="text-[30px] md:text-[60px] leading-none mb-2 font-suisse tracking-widest">
       {date}
