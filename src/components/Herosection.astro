@@ -102,10 +102,15 @@ import Button from "./Button.astro"
   />
 </div>
 
-    <!-- Stemningsbillede -->
-    <div class="grid-item col-start-3 col-span-4 row-start-8 row-span-2 md:col-start-6 md:col-span-4 md:row-start-7 md:row-span-2 flex ">
-      <img src="/img/stemning2.webp" alt="Stemning" class="object-cover w-full h-full" />
-    </div>
+    <div class="grid-item col-start-3 col-span-4 row-start-8 row-span-2 md:col-start-6 md:col-span-4 md:row-start-7 md:row-span-2 flex">
+  <img
+    id="stemning-slideshow-2"
+    src="/img/stemning2.webp"
+    alt="Stemning"
+    class="object-cover w-full h-full"
+  />
+</div>
+
   </div>
 </div>
 </article>
@@ -153,4 +158,19 @@ import Button from "./Button.astro"
     index = (index + 1) % images.length;
     imgEl.src = images[index];
   }, 1500); // skifter hver 3. sekund
+
+  const images2 = [
+    "/img/stemning2.webp",
+    "/img/stemning3.webp",
+    "/img/stemning7.webp",
+    "/img/stemning8.webp"
+  ];
+
+  let index2 = 0;
+  const imgEl2 = document.getElementById("stemning-slideshow-2");
+
+  setInterval(() => {
+    index2 = (index2 + 1) % images2.length;
+    imgEl2.src = images2[index2];
+  }, 1500);
 </script>
