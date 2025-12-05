@@ -21,7 +21,7 @@ const allConcerts = [...novemberConcerts, ...decemberConcerts];
 
 <!-- H1 OVER FILTER MENU -->
 <div class="mt-8 md:mt-14.5 mb-10">
-  <h1 class="text-[#272727] text-[40px] md:text-[80px] font-suisse tracking-widest text-center">
+  <h1 class="text-[#272727] text-[35px] md:text-[70px] font-suisse tracking-widest text-center">
     PROGRAM
   </h1>
 </div>
@@ -68,7 +68,7 @@ const allConcerts = [...novemberConcerts, ...decemberConcerts];
         <div id="genreDropdown" class="hidden absolute left-1/2 -translate-x-1/2 mt-2 border-[#4A40FF] border-3 md:border-5 w-56 bg-[#E8A9C4] z-20 flex flex-col">
           {["experimental","noise","jazz","classical","folk","electronic"].map(genre => (
             <button
-              class="w-full text-center px-4 py-2 md:py-3 hover:text-[#4A40FF] text-[#272727] text-[14px] md:text-[20px] font-suisse tracking-widest capitalize"
+              class="w-full text-center px-4 py-2 md:py-3 hover:text-[#4A40FF] text-[#272727] text-[15px] md:text-[20px] font-suisse tracking-widest capitalize"
               data-genre={genre}
             >
               {genre}
@@ -95,7 +95,7 @@ const allConcerts = [...novemberConcerts, ...decemberConcerts];
     return (
       <div key={month} class={`concert-section ${month === "December" ? "mt-15 md:mt-20" : ""}`}>
         <div class="grid grid-cols-6 md:grid-cols-10 gap-4 md:gap-0 auto-rows-auto stagger-grid px-21.5 md:px-0">
-          <h2 class="col-span-4 md:col-span-4 md:col-start-6 text-[#272727] text-[30px] md:text-[80px] font-suisse tracking-widest">
+          <h2 class="col-span-4 md:col-span-4 md:col-start-6 text-[#272727] text-[30px] md:text-[50px] font-suisse tracking-widest">
             {month}
           </h2>
 

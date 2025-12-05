@@ -17,14 +17,14 @@ const {
 ---
 {href ? (
   <a href={href} class="block w-full">
-    <div class="group w-full border-2 border-[#3B2CFF] bg-white cursor-pointer">
+    <div class="group w-full border-3 md:border-5 border-[#3B2CFF] bg-white cursor-pointer">
       <div class="grid grid-cols-2 h-12 w-full">
 
         <!-- VENSTRE DEL (KØB BILLET) — HOVER BLIVER BLÅ -->
         <div class="bg-[#E8A9C4] flex items-center justify-center
                     transition-colors duration-200
                     group-hover:bg-[#3B2CFF] group-hover:text-white">
-          <span class="font-suisse tracking-[0.12em] text-[14px] md:text-[16px] uppercase">
+          <span class="font-suisse tracking-[0.12em] text-[15px] md:text-[20px] uppercase">
             {label}
           </span>
         </div>
@@ -40,14 +40,14 @@ const {
     </div>
   </a>
 ) : (
-  <div class="group w-full border-2 border-[#3B2CFF] bg-white cursor-pointer">
+  <div class="group w-full border-3 md:border-5 border-[#3B2CFF] bg-white cursor-pointer">
     <div class="grid grid-cols-2 h-12 w-full">
 
       <!-- VENSTRE DEL (STATISK VERSION) -->
       <div class="bg-[#E8A9C4] flex items-center justify-center
                   transition-colors duration-200
                   group-hover:bg-[#3B2CFF] group-hover:text-white">
-        <span class="font-suisse tracking-[0.12em] text-[14px] md:text-[16px] uppercase">
+        <span class="font-suisse tracking-[0.12em] text-[15px] md:text-[20px] uppercase">
           {label}
         </span>
       </div>
