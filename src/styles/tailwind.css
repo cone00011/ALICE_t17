@@ -29,3 +29,11 @@
   font-weight: 700;
   font-style: normal;
 }
+
+p {
+  @apply ml-4 mr-4 mt-5 tracking-[0.1em] ;
+}
+
+h3 {
+  @apply ml-4 mr-4 mt-5 tracking-[0.1em] ;
+}
