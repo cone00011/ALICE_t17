@@ -91,28 +91,42 @@ let isOpen = false;
       </p>
 
       <form class="flex flex-col gap-4">
-        <input 
-          type="text"
-          placeholder="Navn + efternavn"
-          class="border-[3px] md:border-[5px]
-                 border-[#E8A9C4]
-                 px-3 py-2 w-full
-                 focus:outline-none
-                 tracking-widest font-suisse"
-        />
 
-        <input 
-          type="email"
-          placeholder="Email"
-          class="border-[3px] md:border-[5px]
-                 border-[#E8A9C4]
-                 px-3 py-2 w-full
-                 focus:outline-none
-                 tracking-widest font-suisse"
-        />
+  <div>
+    <label for="name" class="sr-only">Navn og efternavn</label>
+    <input 
+      id="name"
+      name="name"
+      type="text"
+      placeholder="Navn + efternavn"
+      class="border-[3px] md:border-[5px]
+             border-[#E8A9C4]
+             px-3 py-2 w-full
+             focus:outline-none
+             tracking-widest font-suisse"
+      required
+    />
+  </div>
 
-        <Button text="TILMELD" direction="right" />
-      </form>
+  <div>
+    <label for="email" class="sr-only">Email</label>
+    <input 
+      id="email"
+      name="email"
+      type="email"
+      placeholder="Email"
+      class="border-[3px] md:border-[5px]
+             border-[#E8A9C4]
+             px-3 py-2 w-full
+             focus:outline-none
+             tracking-widest font-suisse"
+      required
+    />
+  </div>
+
+  <Button text="TILMELD" direction="right" />
+</form>
+
 
     </div>
   </div>

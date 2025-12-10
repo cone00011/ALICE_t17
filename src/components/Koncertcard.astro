@@ -20,7 +20,7 @@ const {
 } = Astro.props;
 
 let colorClasses = highlight
-  ? "bg-[#4A40FF] text-[#000000]"
+  ? "bg-[#4A40FF] text-[#f6f6f6]"
   : "bg-[#E8A9C4] text-[#272727]";
 ---
 
@@ -41,12 +41,16 @@ let colorClasses = highlight
 >
 
 {origin && (
-  <div class="absolute top-2 right-2 md:top-4 md:right-4 
-              text-[16px] md:text-[20px] font-suisse tracking-widest
-               text-[#272727] px-2 py-1 ">
+  <div
+    class={`absolute top-2 right-2 md:top-4 md:right-4 
+            text-[16px] md:text-[20px] font-suisse tracking-widest
+            px-2 py-1
+            ${highlight ? 'text-[#f6f6f6]' : 'text-[#272727]'}`}
+  >
     {origin}
   </div>
 )}
+
 
 
 
