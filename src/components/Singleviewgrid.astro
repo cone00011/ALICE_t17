@@ -101,12 +101,15 @@ import FloatingTicketBar from "../components/FloatingTicketBar.astro";
    </p>
    <div x-data="{ open: false }">
   <!-- Trigger -->
-  <button 
-    @click="open = true" 
-    class="text-[15px] md:text-[20px] font-suisse leading-relaxed ml-4 cursor-pointer text-[#4A40FF]"
-  >
-    Læs mere
-  </button>
+ <button 
+  @click="open = true"
+  class="text-[15px] md:text-[20px] font-suisse leading-relaxed ml-4 
+         text-[#4A40FF] cursor-pointer
+         transition-opacity duration-200 hover:opacity-70"
+>
+  Læs mere
+</button>
+
 
   <!-- Overlay -->
   <div
@@ -186,12 +189,14 @@ import FloatingTicketBar from "../components/FloatingTicketBar.astro";
 
    <div x-data="{ open: false }">
   <!-- Trigger -->
-  <button 
-    @click="open = true" 
-    class="text-[15px] md:text-[20px] font-suisse leading-relaxed ml-4 cursor-pointer text-[#4A40FF]"
-  >
-    Læs mere
-  </button>
+ <button 
+  @click="open = true"
+  class="text-[15px] md:text-[20px] font-suisse leading-relaxed ml-4 
+         text-[#4A40FF] cursor-pointer
+         transition-opacity duration-200 hover:opacity-70"
+>
+  Læs mere
+</button>
 
   <!-- Overlay -->
   <div
