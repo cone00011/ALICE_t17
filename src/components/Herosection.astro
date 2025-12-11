@@ -89,7 +89,7 @@ import Button from "./Button.astro"
 
     <!-- Logo under H1 -->
     <div class="grid-item col-start-5 col-span-6 row-start-3 row-span-2 md:col-start-8 md:col-span-2 md:row-start-3 md:row-span-2 flex justify-center items-center">
-      <img src="/logo/272727_logo.png" alt="Logo" class="w-3/4 h-auto md:w-3/4 md:h-auto object-contain" />
+      <img id="stemning-slideshow-3" src="/logo/272727_logo.png" alt="Logo" class="w-3/4 h-auto md:w-3/4 md:h-auto object-contain" />
     </div>
 
     <!-- Stemningsbillede -->
@@ -173,4 +173,21 @@ import Button from "./Button.astro"
     index2 = (index2 + 1) % images2.length;
     imgEl2.src = images2[index2];
   }, 1500);
+
+   const images3 = [
+    "/animation/1.png",
+    "/animation/2.png",
+    "/animation/3.png",
+    "/animation/4.png",
+    "/animation/5.png",
+    "/animation/272727_logo.png",
+  ];
+
+  let index3 = 0;
+  const imgEl3 = document.getElementById("stemning-slideshow-3");
+
+  setInterval(() => {
+    index3 = (index3 + 1) % images3.length;
+    imgEl3.src = images3[index3];
+  }, 400);
 </script>

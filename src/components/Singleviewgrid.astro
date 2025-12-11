@@ -97,9 +97,60 @@ import FloatingTicketBar from "../components/FloatingTicketBar.astro";
     Den egyptiske sangerinde og komponist Nadah El Shazly
     er en af hovedskikkelserne på den eksperimenterende
     musikscene i Cairo. Hun forener rødder fra den traditionelle
-    arabiske musik med moderne jazz, elektronik og eksperimenterende rock, og for den genreblanding, og for hendes fortryllende vokaler<br>
-    og avant-garde arrangementer, har hun vundet fans verden over.
+    arabiske musik med moderne jazz, elektronik og eksperimenterende rock, og for den genreblanding.
    </p>
+   <div x-data="{ open: false }">
+  <!-- Trigger -->
+  <button 
+    @click="open = true" 
+    class="text-[15px] md:text-[20px] font-suisse leading-relaxed ml-4 cursor-pointer text-[#4A40FF]"
+  >
+    Læs mere
+  </button>
+
+  <!-- Overlay -->
+  <div
+    x-show="open"
+    x-transition.opacity
+    class="fixed inset-0 bg-black/60 backdrop-blur-sm z-40"
+    @click="open = false"
+  ></div>
+
+  <!-- Modal box -->
+  <div 
+    x-show="open"
+    x-transition
+    @click.stop
+    class="
+      fixed z-50  p-6 overflow-y-auto
+      w-[90%] h-[60%]
+      md:w-[600px] md:h-[500px]
+      left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2
+      border-[#4A40FF] border-[3px] md:border-[5px]
+    "
+    style="background-image: url('/logo/alice_baggrund.png');"
+  >
+
+    <!-- Close button -->
+    <button 
+      @click="open = false"
+      class="absolute top-4 right-4 text-2xl font-bold cursor-pointer hover:text-[#4A40FF]"
+    >
+      ✕
+    </button>
+
+    <!-- Popup content -->
+    <div class="text-[15px] md:text-[20px] font-suisse leading-relaxed space-y-4">
+      <h2 class="text-[20px] md:text-[30px] font-suisse">Nadah el shazly</h2>
+      <p>
+       Den egyptiske sangerinde og komponist Nadah El Shazly er en af hovedskikkelserne på den eksperimenterende musikscene i Cairo. Hun forener rødder fra den traditionelle arabiske musik med moderne jazz, elektronik og eksperimenterende rock, og for den genreblanding, og for hendes fortryllende vokaler og avant-garde arrangementer, har hun vundet fans verden over. Som helt ung begik Nadah El Shazly sig på den egyptiske punkscene, inden hun begyndte at eksperimentere med elektronisk musik. I 2017 brød hun igennem med det overdådige album ‘Ahwar’, som modtog fremragende anmeldelser og havnede bl.a. på en prominent 12. plads på The Wires liste over årets album. Og i juni udkom den længe ventede efterfølger ‘Laini Tani’. <br> <br>
+
+‘Laini Tani’, der også er blevet taget godt imod af anmelderne, formidler en følelse af lune nætter, der strækker sig og bliver til morgendag. Albummet har nemlig den her sensuelle, men flygtige stemning over sig. På ‘Laini Tani’ væver Nadah El Shazly egyptisk improvisation, stemmemanipulation og elektroniske beats sammen til kunstnerisk udtryk, som omfavner både sårbarhed og sætter en stor fed streg under musikkens forunderlige kraft. Nadah El Shazly har spillet på ALICE i 2019 og i 2022, og i år kunne man også opleve hende på Roskilde Festival, hvor hun fik væggene på Gloria til at dirre og al sniksnak i hjørnerne til at ophøre. Med andre ord havde hun publikum i sin hule hånd! Nadah El Shazly formår nemlig at forene en klubbet koncertoplevelse med et enormt stort nærvær – og derfor ser vi så meget frem til igen at præsentere den banebrydende, elektroniske musiker tilbage på vores scene!
+      </p>
+    </div>
+
+  </div>
+</div>
 
 
   </div>
@@ -133,6 +184,58 @@ import FloatingTicketBar from "../components/FloatingTicketBar.astro";
     Med glitches former Nova Varnrable gribende fortællinger. Den etiopisk-norske kunstner og musikproducer med base i København, er internationalt kendt for sin eksperimenterende elektroniske musik. Hendes sange bevæger sig gennem et spektrum af lyde, der bryder genrer, bygger scenarier op, samt udforsker kompositionens muligheder.  
    </p>
 
+   <div x-data="{ open: false }">
+  <!-- Trigger -->
+  <button 
+    @click="open = true" 
+    class="text-[15px] md:text-[20px] font-suisse leading-relaxed ml-4 cursor-pointer text-[#4A40FF]"
+  >
+    Læs mere
+  </button>
+
+  <!-- Overlay -->
+  <div
+    x-show="open"
+    x-transition.opacity
+    class="fixed inset-0 bg-black/60 backdrop-blur-sm z-40"
+    @click="open = false"
+  ></div>
+
+  <!-- Modal box -->
+  <div 
+    x-show="open"
+    x-transition
+    @click.stop
+    class="
+      fixed z-50  p-6 overflow-y-auto
+      w-[90%] h-[60%]
+      md:w-[600px] md:h-[500px]
+      left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2
+      border-[#4A40FF] border-[3px] md:border-[5px]
+    "
+    style="background-image: url('/logo/alice_baggrund.png');"
+  >
+
+    <!-- Close button -->
+    <button 
+      @click="open = false"
+      class="absolute top-4 right-4 text-2xl font-bold cursor-pointer hover:text-[#4A40FF]"
+    >
+      ✕
+    </button>
+
+    <!-- Popup content -->
+    <div class="text-[15px] md:text-[20px] font-suisse leading-relaxed space-y-4">
+      <h2 class="text-[20px] md:text-[30px] font-suisse">Nova Varnrable</h2>
+      <p>
+       Med glitches former Nova Varnrable gribende fortællinger. Den etiopisk-norske kunstner og musikproducer med base i København, er internationalt kendt for sin eksperimenterende elektroniske musik. Hendes sange bevæger sig gennem et spektrum af lyde, der bryder genrer, bygger scenarier op, samt udforsker kompositionens muligheder. Slagtøj, samples, liveinstrumenter og vokaler smelter sammen til ét, forførende hele. Med sin musik omfavner Nova Varnrable det, som findes mellem sprækkerne, og falder uden for: Hendes musik er en invitation ind i en anden verden på nye præmisser. <br> <br>
+
+Nova Varnrable har en flydende tilgang til form og udtryk. Denne tilgang strækker sig på tværs af hendes tværfaglige arbejde og spænder over film, kunst, mode og liveoptræden. Hun har udgivet musik på labels som 5 Gate Temple (UK) og D.O.T Audioarts (US). Seneste samarbejder tæller projekter med Dean Blunt og Authentically Plastic samt bidrag til mode- og filmprojekter og lydværker til dokumentarer og kunstudstillinger. Nova Varnrable har spillet på blandt andet Roskilde Festival, Øhavet Festival og senest på Café OTO i London. Vi glæder os til at byde Nova Varnrable velkommen på vores scene.
+      </p>
+    </div>
+
+  </div>
+</div>
   </div>
    
     
