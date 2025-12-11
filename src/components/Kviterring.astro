@@ -1,0 +1,140 @@
+---
+import Button from "./Button.astro"
+---
+<article>
+<div class="relative w-full ">
+  <!-- Grid container desktop -->
+  <div class="hero-grid w-full h-full absolute inset-0 overflow-hidden">
+
+    <div class="grid-item hidden md:col-start-3 md:col-span-2 md:row-start-1 md:row-span-1 md:flex ">
+      <img src="/blok/langblok.png" alt="Logo" />
+    </div>
+    <div class="grid-item hidden md:col-start-9 md:col-span-2 md:row-start-1 md:row-span-1 md:flex ">
+      <img src="/blok/langblok_cropped.png" alt="Logo" />
+    </div>
+   
+    <div class="grid-item hidden md:col-start-1 md:col-span-1 md:row-start-4 md:row-span-1 md:flex ">
+      <img src="/blok/lilleblok_stroke.png" alt="Logo" />
+    </div>
+    <div class="grid-item hidden md:col-start-10 md:col-span-1 md:row-start-4 md:row-span-2 md:flex ">
+      <img src="/blok/langblok_stroke_oprejst.png" alt="Logo" />
+    </div>
+
+    
+
+
+<!-- Grid container mobil -->
+
+<div class="grid-item flex col-start-6 col-span-2 row-start-1 row-span-1 md:hidden ">
+      <img src="/blok/lilleblok.png" alt="Logo" />
+    </div>
+
+<div class="grid-item flex col-start-1 col-span-2 row-start-4 row-span-1 md:hidden ">
+      <img src="/blok/lilleblok_stroke.png" alt="Logo" />
+    </div>
+
+<div class="grid-item flex col-start-1 col-span-1 row-start-9 row-span-2 md:hidden ">
+      <img src="/blok/lilleblok.png" alt="Logo" />
+    </div>
+
+    <div class="grid-item flex col-start-6 col-span-1 row-start-7 row-span-1 md:hidden ">
+      <img src="/blok/lilleblok.png" alt="Logo" />
+    </div>
+
+   <!-- Tekst -->
+<div class="grid-item col-start-2 col-span-4 row-start-3 row-span-3 
+            md:col-start-4 md:col-span-4 md:row-start-3 md:row-span-2 
+            flex pointer-events-auto justify-center items-center">
+  <p class="text-[15px] md:text-[20px] text-[#272727] mt-5 md:mt-5 
+            tracking-tighter font-suisse text-center">
+    Tak for din bestilling. Du vil inden længe modtage en bekræftelsesmail med dine billetter. <br><br>
+    Pssssst Vil du være den første til at høre om kommende koncerter og events? Tilmeld dig vores nyhedsbrev
+  </p>
+</div>
+
+<!-- NYHEDSBREV FORM – LIGE UNDER TEKSTEN -->
+<div class="grid-item col-start-2 col-span-4 row-start-6 row-span-3 md:row-span-2
+            md:col-start-4 md:col-span-4 md:row-start-5 
+            flex justify-center items-start">
+  <form class="flex flex-col gap-4 w-full max-w-md mt-4">
+
+    <div>
+      <label for="name" class="sr-only">Navn og efternavn</label>
+      <input 
+        id="name"
+        name="name"
+        type="text"
+        placeholder="Navn + efternavn"
+        class="border-[3px] md:border-[5px] border-[#E8A9C4]
+               px-3 py-2 w-full focus:outline-none 
+               tracking-widest font-suisse"
+        required
+      />
+    </div>
+
+    <div>
+      <label for="email" class="sr-only">Email</label>
+      <input 
+        id="email"
+        name="email"
+        type="email"
+        placeholder="Email"
+        class="border-[3px] md:border-[5px] border-[#E8A9C4]
+               px-3 py-2 w-full focus:outline-none 
+               tracking-widest font-suisse"
+        required
+      />
+    </div>
+
+    <Button text="TILMELD" direction="right" />
+  </form>
+</div>
+
+
+
+
+ 
+
+    <!-- H1 placeret perfekt -->
+    <div class="grid-item col-start-2 col-span-4 row-start-2 row-span-1 md:col-start-4 md:col-span-4 md:row-start-2 md:row-span-1 flex  pointer-events-none justify-center items-center mt-4 md:mt-0">
+      <h3 class="font-suisse text-[20px] md:text-[30px] tracking-[0.1em] text-[#272727]">Vi glæder os til at se dig!</h3>
+    </div>
+     
+
+    <!-- Logo -->
+    <div class="grid-item hidden md:col-start-1 md:col-span-2 md:row-start-1 md:row-span-2 md:flex justify-center items-center z-10">
+      <img src="/logo/272727_logo.png" alt="Logo" class="w-3/4 h-auto md:w-3/4 md:h-auto object-contain" />
+    </div>
+
+    
+
+  
+
+  </div>
+</div>
+</article>
+
+<style>
+.hero-grid {
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  grid-template-rows: repeat(6, 10vw); /* reduceret fra 10 */
+  width: 100%;
+  height: 100%;
+  position: relative;
+  overflow: hidden; 
+}
+
+.grid-item {
+  position: relative;
+  overflow: hidden; /* Alt udenfor kolonner/rækker klippes */
+  
+}
+
+@media (max-width: 768px) {
+  .hero-grid {
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: repeat(10, 16vw); /* reduceret fra 15 */
+  }
+}
+</style>
