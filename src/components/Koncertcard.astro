@@ -2,17 +2,19 @@
 interface Props {
   date: string;
   artist: string;
-  origin: string; // fx "etnicitet"
+  origin: string;
+  ticketsLeft?: string; // nyt tag for få billetter
   extraClass?: string;
   highlight?: boolean;
-  month?: string;   // fx "November"
-  genre?: string;   // fx "folk", "electronic"
+  month?: string;
+  genre?: string;
 }
 
 const {
   date,
   artist,
   origin,
+  ticketsLeft = "",
   extraClass = "",
   highlight = false,
   month = "",
@@ -22,6 +24,7 @@ const {
 let colorClasses = highlight
   ? "bg-[#4A40FF] text-[#f6f6f6]"
   : "bg-[#E8A9C4] text-[#272727]";
+
 ---
 
 <!--
@@ -30,44 +33,52 @@ let colorClasses = highlight
 -->
 <a href="/singleview" class="block w-full h-full">
   <div
-  class={`relative px-6 py-5 w-full h-full font-suisse tracking-widest 
-    ${colorClasses} ${extraClass} 
-    border-0 
-    hover:border-[3px] md:hover:border-[5px]
-    transition-all duration-200
-    ${highlight ? 'hover:border-[#E8A9C4]' : 'hover:border-[#4A40FF]'}`}
-  data-month={month}
-  data-genre={genre}
->
-
-{origin && (
-  <div
-    class={`absolute top-2 right-2 md:top-4 md:right-4 
-            text-[16px] md:text-[20px] font-suisse tracking-widest
-            px-2 py-1
-            ${highlight ? 'text-[#f6f6f6]' : 'text-[#272727]'}`}
+    class={`relative px-6 py-5 w-full h-full font-suisse tracking-widest 
+      ${colorClasses} ${extraClass} 
+      border-0 
+      hover:border-[3px] md:hover:border-[5px]
+      transition-all duration-200
+      ${highlight ? 'hover:border-[#E8A9C4]' : 'hover:border-[#4A40FF]'}`}
+    data-month={month}
+    data-genre={genre}
   >
-    {origin}
-  </div>
-)}
 
-
-
+    {origin && (
+      <div
+        class={`absolute top-2 right-2 md:top-4 md:right-4 
+                text-[16px] md:text-[20px] font-suisse tracking-widest
+                px-2 py-1
+                ${highlight ? 'text-[#f6f6f6]' : 'text-[#272727]'}`}
+      >
+        {origin}
+      </div>
+    )}
 
     <!-- Dato -->
     <div class="text-[20px] md:text-[30px] leading-none mb-2 font-suisse tracking-widest">
       {date}
     </div>
 
+   <!-- Tickets left centreret vandret -->
+{ticketsLeft && (
+  <div
+    class={`absolute top-4 left-1/2 transform -translate-x-1/2
+            text-[16px] md:text-[20px] font-suisse tracking-widest
+            px-2 py-1
+            ${highlight ? 'text-[#f6f6f6]' : 'text-[#272727]'}`}
+  >
+    {ticketsLeft}
+  </div>
+)}
+
+
     <!-- Kunstnernavn + pil -->
     <div class="relative text-[20px] md:text-[30px] leading-snug font-suisse tracking-widest pr-8">
       {artist}
-      <!-- Pil -->
-      <span class="absolute bottom-0 right-0 text-[20px] md:text-[30px]">
-        →
-      </span>
+      <span class="absolute bottom-0 right-0 text-[20px] md:text-[30px]">→</span>
     </div>
   </div>
 </a>
+
 
 

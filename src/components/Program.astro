@@ -2,13 +2,14 @@
 import Koncertcard from "./Koncertcard.astro";
 
 const novemberConcerts = [
-  { date: "20/11", artist: "Nadah el shazly", highlight: false, month: "November", genre: "experimental", origin: "/EG" },
-  { date: "21/11", artist: "Users + Syringe", highlight: true,  month: "November", genre: "noise", origin: "/DK" },
+  { date: "20/11", artist: "Nadah el shazly", highlight: false, month: "November", genre: "experimental", origin: "/EG", ticketsLeft: "[Få billetter]" },
+  { date: "21/11", artist: "Users + Syringe", highlight: true,  month: "November", genre: "noise", origin: "/DK", },
   { date: "22/11", artist: "Etuk Ubong & The Etuk Philosphy", highlight: false, month: "November", genre: "jazz", origin: "/NG" },
   { date: "23/11", artist: "Athleas Sinfonietta Copenhagen", highlight: false, month: "November", genre: "classical", origin: "/INT" },
-  { date: "26/11", artist: "Ye vagabonds", highlight: true, month: "November", genre: "folk", origin: "/IE" },
+  { date: "26/11", artist: "Ye vagabonds", highlight: true, month: "November", genre: "folk", origin: "/IE", ticketsLeft: "[Få billetter]"},
   { date: "28/11", artist: "Nyahh Records presents: Mohammad Syfkhan + Ultan O’Brien + HEDGLING", highlight: false, month: "November", genre: "electronic", origin: "/INT" },
 ];
+
 
 const decemberConcerts = novemberConcerts.map(c => ({
   ...c,
@@ -113,13 +114,14 @@ const allConcerts = [...novemberConcerts, ...decemberConcerts];
                 data-highlight={c.highlight}
               >
                 <Koncertcard
-                  date={c.date}
-                  artist={c.artist}
-                  origin={c.origin}
-                  highlight={c.highlight}
-                  month={c.month}
-                  genre={c.genre}
-                />
+  date={c.date}
+  artist={c.artist}
+  origin={c.origin}
+  ticketsLeft={c.ticketsLeft}   
+  highlight={c.highlight}
+  month={c.month}
+  genre={c.genre}
+/>
               </div>
             )
           })}
