@@ -56,8 +56,8 @@ import KobsInfoBox from "../components/KobsInfoBox.astro";
 
         <!-- ADRESSE-BOKSEN -->
         <div
-          class="grid-item col-start-2 col-span-4 row-start-4 row-span-5
-                     md:col-start-2 md:col-span-8 md:row-start-4 md:row-span-3 flex"
+          class="grid-item col-start-2 col-span-4 row-start-4 row-span-6
+                     md:col-start-2 md:col-span-8 md:row-start-4 md:row-span-4 flex"
         >
           <KobsInfoBox
             eventTitle="Nadah El Shazly + Nova Varnrable"
@@ -110,7 +110,7 @@ import KobsInfoBox from "../components/KobsInfoBox.astro";
     .hero-grid {
       display: grid;
       grid-template-columns: repeat(10, 1fr);
-      grid-template-rows: repeat(6, 10vw);
+      grid-template-rows: repeat(8, 10vw);
       width: 100%;
       /* vigtig: min-h så der ER højde nok */
       min-height: 60vh;
@@ -126,7 +126,7 @@ import KobsInfoBox from "../components/KobsInfoBox.astro";
     @media (max-width: 768px) {
       .hero-grid {
         grid-template-columns: repeat(6, 1fr);
-        grid-template-rows: repeat(7, 16vw);
+        grid-template-rows: repeat(9, 16vw);
       }
     }
   </style>
