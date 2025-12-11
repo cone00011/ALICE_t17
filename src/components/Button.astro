@@ -14,12 +14,18 @@ const arrow = direction === 'down' ? '↓' : '→';
 
 <button
   type="button"
-  class="mt-2 text-[#272727]
+  class="mt-2 text-[#4A40FF]
          text-[15px] md:text-[20px]
          py-3
-         hover:text-[#4A40FF]
          tracking-widest font-suisse
-         transition-colors duration-200"
->
-  {text} {arrow}
+         transition-colors duration-200
+         hover:text-[#4A40FF]
+         cursor-pointer
+">
+  <span class="inline-flex items-center gap-2 transition-transform duration-200 hover:translate-x-[2px]">
+    {text}
+    <span class="arrow">→</span>
+  </span>
 </button>
+
+
