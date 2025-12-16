@@ -29,7 +29,8 @@ const allConcerts = [...novemberConcerts, ...decemberConcerts];
 
 
 <!-- ========== FILTER MENU ========== -->
-<div class="w-full bg-[#E8A9C4] py-2 md:border-b-5 border-b-3 border-[#4A40FF] mb-10">
+<div class="w-full py-2 md:border-b-5 border-b-3 border-t-3 md:border-t-5 border-[#4A40FF] mb-10"
+style="background-image: url('/logo/alice_baggrund.png');">
   <div class="max-w-[1400px] mx-auto relative flex justify-center">
 
     <!-- MOBILE FILTER BUTTON -->
@@ -40,7 +41,7 @@ const allConcerts = [...novemberConcerts, ...decemberConcerts];
 
     <!-- FILTER WRAPPER -->
     <div id="filterWrapper"
-      class="hidden md:flex flex-col md:flex-row gap-4 md:gap-20 justify-center items-center absolute md:static top-full left-1/2 -translate-x-1/2 md:translate-x-0 mt-2 md:mt-0 bg-[#E8A9C4] md:bg-transparent border-3 md:border-0 border-[#4A40FF] px-4 py-4 md:p-0 z-30 text-center md:text-left">
+      class="hidden md:flex flex-col md:flex-row gap-4 md:gap-20 justify-center items-center absolute md:static top-full left-1/2 -translate-x-1/2 md:translate-x-0 mt-2 md:mt-0 md:bg-transparent border-3 md:border-0 border-[#4A40FF] px-4 py-4 md:p-0 z-30 text-center md:text-left" style="background-image: url('/logo/alice_baggrund.png');">
 
       <!-- Month dropdown -->
       <div class="relative">
@@ -48,7 +49,7 @@ const allConcerts = [...novemberConcerts, ...decemberConcerts];
           class="text-[#272727] text-[15px] md:text-[20px] px-6 py-3 hover:text-[#4A40FF] tracking-widest font-suisse transition-colors">
           MÅNED ↓
         </button>
-        <div id="monthDropdown" class="hidden absolute left-1/2 -translate-x-1/2 mt-2 border-[#4A40FF] border-3 md:border-5 w-40 bg-[#E8A9C4] z-20 flex flex-col">
+        <div id="monthDropdown" class="hidden absolute left-1/2 -translate-x-1/2 mt-2 border-[#4A40FF] border-3 md:border-5 w-40  z-20 flex flex-col" style="background-image: url('/logo/alice_baggrund.png');">
           {["November","December"].map(month => (
             <button
               class="w-full text-center px-4 py-2 md:py-3 hover:text-[#4A40FF] text-[#272727] text-[14px] md:text-[20px] font-suisse tracking-widest"
@@ -66,7 +67,7 @@ const allConcerts = [...novemberConcerts, ...decemberConcerts];
           class="text-[#272727] text-[15px] md:text-[20px] px-6 py-3 hover:text-[#4A40FF] tracking-widest font-suisse transition-colors">
           GENRE ↓
         </button>
-        <div id="genreDropdown" class="hidden absolute left-1/2 -translate-x-1/2 mt-2 border-[#4A40FF] border-3 md:border-5 w-56 bg-[#E8A9C4] z-20 flex flex-col">
+        <div id="genreDropdown" class="hidden absolute left-1/2 -translate-x-1/2 mt-2 border-[#4A40FF] border-3 md:border-5 w-56 z-20 flex flex-col" style="background-image: url('/logo/alice_baggrund.png');">
           {["experimental","noise","jazz","classical","folk","electronic"].map(genre => (
             <button
               class="w-full text-center px-4 py-2 md:py-3 hover:text-[#4A40FF] text-[#272727] text-[15px] md:text-[20px] font-suisse tracking-widest capitalize"
